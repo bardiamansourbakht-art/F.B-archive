@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>آرشیو F&B · هلدینگ آینه</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0a0a0a;--surface:#111;--s2:#161616;--border:#1e1e1e;
+  --text:#e5e5e5;--muted:#666;--dim:#3a3a3a;--accent:#6366f1;
+  --green:#10b981;--amber:#f59e0b;--red:#ef4444;
+}
+html,body{background:var(--bg);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;min-height:100vh;overflow-x:hidden}
+button,input,textarea,select{font-family:inherit;outline:none}
+button{cursor:pointer;border:none}
+a{color:var(--accent)}
+
+/* ── Header ── */
+.hdr{position:sticky;top:0;z-index:200;background:#0f0f0f;border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.hdr-title{font-size:15px;font-weight:700;color:#fff}
+.hdr-sub{font-size:10px;color:var(--dim);margin-top:1px}
+.hdr-nav{display:flex;gap:5px}
+.nb{padding:7px 11px;border-radius:8px;font-size:12px;font-weight:500;background:transparent;color:var(--muted)}
+.nb.active{background:#1e1e1e;color:#fff}
+.nb.accent{background:var(--accent);color:#fff}
+
+/* ── Views ── */
+.view{display:none;padding:14px;max-width:720px;margin:0 auto;padding-bottom:90px}
+.view.on{display:block}
+
+/* ── Cards / Sections ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px}
+.sec-title{font-size:13px;font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:14px;color:var(--text)}
+.sec-sub{font-size:10px;color:var(--muted);font-weight:400;margin-right:4px}
+.slabel{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px;margin-top:12px}
+.slabel:first-child{margin-top:0}
+.row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #181818;gap:10px}
+.rl{font-size:12px;color:var(--muted);flex-shrink:0}
+.rv{font-size:12px;color:#ccc;text-align:left;word-break:break-word}
+.metric{background:var(--s2);border-radius:8px;padding:10px 12px}
+.ml{font-size:10px;color:var(--muted);margin-bottom:3px}
+.mv{font-size:14px;font-weight:700;color:var(--text)}
+.mv.ac{color:var(--accent)}.mv.gr{color:var(--green)}.mv.rd{color:var(--red)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px}
+.bullet{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #181818}
+.bd{font-size:12px;flex-shrink:0}.bd.ac{color:var(--accent)}.bd.rd{color:var(--red)}
+.bt{font-size:12px;color:#bbb}
+.step{display:flex;gap:10px;margin-bottom:9px}
+.sn{color:var(--accent);font-weight:700;min-width:18px;font-size:13px}
+.st{font-size:13px;color:#bbb;line-height:1.6}
+.eq-g{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.eq-c{background:var(--s2);border-radius:8px;padding:9px 11px}
+.eq-n{font-size:12px;color:#ddd}.eq-s{font-size:10px;color:var(--muted);margin-top:2px}
+.supply-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #181818}
+.sn2{font-size:12px;color:#ccc}.sr{display:flex;align-items:center;gap:5px}
+.ssrc{font-size:11px;color:var(--muted)}
+.sbadge{font-size:9px;padding:2px 6px;border-radius:10px;background:#f59e0b22;color:var(--amber)}
+.role-b{display:inline-block;padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600}
+.info-p{font-size:12px;color:#aaa;line-height:1.7}
+.sc-g{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.sc-c{background:var(--s2);border-radius:8px;padding:9px 11px}
+.sc-l{font-size:10px;color:var(--muted);margin-bottom:3px}
+.sc-v{font-size:12px;color:#ccc;line-height:1.5}
+.tag{font-size:10px;padding:2px 8px;background:#1e1e1e;border-radius:20px;color:var(--muted)}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+
+/* ── Status ── */
+.sbtn{padding:5px 11px;border-radius:7px;font-size:11px}
+.srow{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}
+
+/* ── Image ── */
+.img-upload-area{border:1.5px dashed var(--border);border-radius:10px;padding:18px;text-align:center;color:var(--muted);font-size:13px;cursor:pointer;margin-bottom:10px;position:relative}
+.img-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.img-preview{width:100%;border-radius:10px;margin-bottom:10px;max-height:220px;object-fit:cover;display:none}
+.doc-img{width:100%;border-radius:10px;margin-bottom:14px;max-height:240px;object-fit:cover}
+
+/* ── Generate ── */
+.gen-textarea{width:100%;min-height:110px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;resize:none;line-height:1.8;display:block}
+.gen-textarea::placeholder{color:var(--dim)}
+.gen-btn{width:100%;padding:13px;background:var(--accent);color:#fff;border-radius:10px;font-size:14px;font-weight:600;margin-top:10px}
+.gen-btn:disabled{background:#1a1a1a;color:var(--dim);cursor:not-allowed}
+.gen-err{color:var(--red);font-size:12px;margin-top:7px;display:none}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid #fff4;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle;margin-left:5px}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ── List ── */
+.search-b{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:10px 13px;color:var(--text);font-size:13px;margin-bottom:11px}
+.search-b::placeholder{color:var(--dim)}
+.frow{display:flex;gap:5px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;scrollbar-width:none}
+.frow::-webkit-scrollbar{display:none}
+.fbtn{padding:6px 12px;border-radius:20px;font-size:11px;white-space:nowrap;background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.fbtn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.doc-grid{display:grid;gap:10px}
+.dc{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:14px;cursor:pointer}
+.dc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:7px;margin-bottom:5px}
+.dc-title{font-size:13px;font-weight:600;color:#fff;line-height:1.4}
+.st-badge{font-size:10px;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.dc-cat{font-size:11px;color:var(--accent);margin-bottom:5px}
+.dc-desc{font-size:12px;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dc-date{font-size:10px;color:var(--dim);margin-top:7px}
+.dc-thumb{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+.empty{text-align:center;padding:50px 0;color:var(--dim)}
+
+/* ── Detail ── */
+.back-btn{background:none;color:var(--accent);font-size:13px;padding:0;margin-bottom:14px;display:flex;align-items:center;gap:3px}
+
+/* ── Manual Form ── */
+.form-section{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:15px;margin-bottom:10px}
+.form-section-title{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.fi{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:13px;margin-bottom:8px}
+.fi::placeholder{color:var(--dim)}
+.fi-label{font-size:11px;color:var(--muted);margin-bottom:4px}
+.fi-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.add-field-btn{background:var(--s2);color:var(--accent);border:1px dashed var(--border);border-radius:7px;padding:8px;width:100%;font-size:12px;margin-bottom:8px}
+.dynamic-field{display:flex;gap:6px;margin-bottom:6px;align-items:center}
+.dynamic-field input{flex:1}
+.dynamic-field button{background:var(--s2);color:var(--red);border-radius:6px;padding:8px 10px;font-size:13px;border:1px solid var(--border);flex-shrink:0}
+.submit-btn{width:100%;padding:13px;background:var(--green);color:#fff;border-radius:10px;font-size:14px;font-weight:600;margin-top:4px}
+.cancel-btn{width:100%;padding:11px;background:var(--s2);color:var(--muted);border-radius:10px;font-size:13px;margin-top:8px}
+
+/* ── Settings ── */
+.key-status{font-size:11px;margin-top:7px;padding:7px 11px;border-radius:7px}
+.key-ok{background:#10b98115;color:var(--green)}
+.key-miss{background:#ef444415;color:var(--red)}
+.save-btn{width:100%;padding:12px;background:var(--accent);color:#fff;border-radius:9px;font-size:14px;font-weight:600;margin-top:8px}
+.del-btn{margin-top:10px;padding:10px 16px;background:var(--surface);border:1px solid #2a1a1a;color:var(--red);border-radius:8px;font-size:12px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <div class="hdr-title">آرشیو F&B</div>
+    <div class="hdr-sub" id="doc-count">هلدینگ آینه · ۰ سند</div>
+  </div>
+  <div class="hdr-nav">
+    <button class="nb active" onclick="show('list')">آرشیو</button>
+    <button class="nb" onclick="show('generate')">+ AI</button>
+    <button class="nb" onclick="show('manual')">+ دستی</button>
+    <button class="nb" onclick="show('settings')" style="font-size:15px;padding:7px 9px">⚙️</button>
+  </div>
+</div>
+
+<!-- ══ LIST ══ -->
+<div class="view on" id="view-list">
+  <input class="search-b" type="text" id="search-input" placeholder="جستجو..." oninput="renderList()">
+  <div class="frow" id="filter-row"></div>
+  <div class="doc-grid" id="doc-grid"></div>
+</div>
+
+<!-- ══ GENERATE (AI) ══ -->
+<div class="view" id="view-generate">
+  <div class="card">
+    <div style="font-size:17px;font-weight:700;margin-bottom:5px">ثبت ایده با AI</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.7">متن بنویس و/یا عکس آپلود کن — AI سند کامل می‌سازه</div>
+
+    <!-- Image upload -->
+    <div class="img-upload-area" id="upload-area">
+      <input type="file" accept="image/*" id="img-input" onchange="handleImageSelect(this)">
+      📷 عکس یا اسکرین‌شات آپلود کن (اختیاری)
+    </div>
+    <img id="img-preview" class="img-preview" alt="preview">
+
+    <textarea class="gen-textarea" id="gen-input" placeholder="توضیح ایده‌ات... مثلاً: یه هات داگ با سوسیس دودی و سس مایو ترافل تو نان بریوش دیدم — صف داشت، ۱۸ دلار بود"></textarea>
+    <div id="gen-err" class="gen-err"></div>
+    <button class="gen-btn" id="gen-btn" onclick="generateDoc()">ساخت سند با AI</button>
+    <div style="font-size:11px;color:var(--dim);margin-top:8px;text-align:center">اگه فقط عکس بفرستی بدون متن هم کار می‌کنه</div>
+  </div>
+</div>
+
+<!-- ══ MANUAL ENTRY ══ -->
+<div class="view" id="view-manual">
+  <div style="font-size:17px;font-weight:700;margin-bottom:5px">ثبت دستی</div>
+  <div style="font-size:12px;color:var(--muted);margin-bottom:14px">همه فیلدها رو خودت پر کن</div>
+
+  <!-- Image -->
+  <div class="form-section">
+    <div class="form-section-title">تصویر</div>
+    <div class="img-upload-area" id="manual-upload-area">
+      <input type="file" accept="image/*" id="manual-img-input" onchange="handleManualImageSelect(this)">
+      📷 عکس محصول (اختیاری)
+    </div>
+    <img id="manual-img-preview" class="img-preview" alt="preview">
+  </div>
+
+  <!-- Identity -->
+  <div class="form-section">
+    <div class="form-section-title">۱. شناسنامه</div>
+    <div class="fi-label">نام محصول *</div>
+    <input class="fi" id="m-title" type="text" placeholder="مثلاً: هات داگ نیویورکی">
+    <div class="fi-label">دسته‌بندی</div>
+    <select class="fi" id="m-category">
+      <option>رسپی</option><option>منو</option><option>مدل سرویس</option><option>تجهیزات</option><option>ایده فضا</option>
+    </select>
+    <div class="fi-label">توضیح ایده</div>
+    <textarea class="fi" id="m-concept" rows="3" placeholder="این محصول چیه و چه تجربه‌ای می‌ده..."></textarea>
+    <div class="fi-label">منشأ ایده</div>
+    <input class="fi" id="m-origin" type="text" placeholder="مثلاً: نیویورک، آمریکا">
+    <div class="fi-label">تگ‌ها (با کاما جدا کن)</div>
+    <input class="fi" id="m-tags" type="text" placeholder="هات داگ، فست فود، آمریکایی">
+  </div>
+
+  <!-- Recipe -->
+  <div class="form-section">
+    <div class="form-section-title">۲. رسپی</div>
+    <div class="fi-label">مواد اولیه</div>
+    <div id="ingredients-list"></div>
+    <button class="add-field-btn" onclick="addField('ingredients-list','ماده اولیه با مقدار دقیق')">+ اضافه کردن ماده</button>
+    <div class="fi-row">
+      <div><div class="fi-label">خروجی</div><input class="fi" id="m-yield" placeholder="۱ پرس"></div>
+      <div><div class="fi-label">آماده‌سازی</div><input class="fi" id="m-prep" placeholder="۵ دقیقه"></div>
+    </div>
+    <div class="fi-label">زمان پخت</div>
+    <input class="fi" id="m-cook" placeholder="۸ دقیقه">
+  </div>
+
+  <!-- SOP -->
+  <div class="form-section">
+    <div class="form-section-title">۳. روش اجرا (SOP)</div>
+    <div class="fi-label">مراحل تولید</div>
+    <div id="steps-list"></div>
+    <button class="add-field-btn" onclick="addField('steps-list','مرحله...')">+ اضافه کردن مرحله</button>
+    <div class="fi-label">زمان سرویس (ثانیه)</div>
+    <input class="fi" id="m-svctime" type="number" placeholder="مثلاً: 180">
+    <div class="fi-label">نقاط کنترل کیفیت</div>
+    <div id="qc-list"></div>
+    <button class="add-field-btn" onclick="addField('qc-list','نقطه کنترل...')">+ اضافه کردن</button>
+  </div>
+
+  <!-- Operations -->
+  <div class="form-section">
+    <div class="form-section-title">۴. نیازهای عملیاتی</div>
+    <div class="fi-label">تجهیزات</div>
+    <div id="equip-list"></div>
+    <button class="add-field-btn" onclick="addField('equip-list','تجهیز با مشخصات')">+ اضافه کردن تجهیز</button>
+    <div class="fi-row">
+      <div><div class="fi-label">تعداد نیرو</div><input class="fi" id="m-staff" placeholder="۲ نفر"></div>
+      <div><div class="fi-label">فضا (م²)</div><input class="fi" id="m-space" type="number" placeholder="۶"></div>
+    </div>
+    <div class="fi-label">سطح مهارت</div>
+    <input class="fi" id="m-skill" placeholder="مثلاً: آشپز میانی">
+  </div>
+
+  <!-- Financials -->
+  <div class="form-section">
+    <div class="form-section-title">۵. مالی</div>
+    <div class="fi-row">
+      <div><div class="fi-label">هزینه مواد (تومان)</div><input class="fi" id="m-fc" placeholder="۴۵,۰۰۰"></div>
+      <div><div class="fi-label">هزینه بسته‌بندی</div><input class="fi" id="m-pkg" placeholder="۵,۰۰۰"></div>
+    </div>
+    <div class="fi-row">
+      <div><div class="fi-label">قیمت فروش (تومان)</div><input class="fi" id="m-price" placeholder="۱۵۰,۰۰۰"></div>
+      <div><div class="fi-label">Food Cost %</div><input class="fi" id="m-fcp" placeholder="۳۳٪"></div>
+    </div>
+    <div class="fi-row">
+      <div><div class="fi-label">حاشیه سود</div><input class="fi" id="m-margin" placeholder="۶۷٪"></div>
+      <div>
+        <div class="fi-label">نقش آیتم</div>
+        <select class="fi" id="m-role">
+          <option value="traffic_driver">Traffic Driver</option>
+          <option value="profit_center">Profit Center</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Market -->
+  <div class="form-section">
+    <div class="form-section-title">۶. بازار</div>
+    <div class="fi-label">مشتری هدف</div>
+    <input class="fi" id="m-target" placeholder="جوانان ۱۸-۳۵ ساله شهری">
+    <div class="fi-label">تخمین تقاضا</div>
+    <input class="fi" id="m-demand" placeholder="بالا — به دلیل...">
+    <div class="fi-label">رقبا در تهران</div>
+    <div id="comp-list"></div>
+    <button class="add-field-btn" onclick="addField('comp-list','رقیب با قیمت')">+ اضافه کردن رقیب</button>
+    <div class="fi-label">تمایز ما</div>
+    <textarea class="fi" id="m-diff" rows="2" placeholder="چرا ما بهتریم..."></textarea>
+  </div>
+
+  <!-- Risks -->
+  <div class="form-section">
+    <div class="form-section-title">۷. ریسک‌ها</div>
+    <div id="risks-list"></div>
+    <button class="add-field-btn" onclick="addField('risks-list','ریسک...')">+ اضافه کردن ریسک</button>
+  </div>
+
+  <!-- Scalability -->
+  <div class="form-section">
+    <div class="form-section-title">۸. توسعه‌پذیری</div>
+    <div class="fi-label">آماده چند شعبه</div>
+    <input class="fi" id="m-branch" placeholder="بله — با آموزش استاندارد">
+    <div class="fi-label">سازگاری آشپزخانه مرکزی</div>
+    <input class="fi" id="m-ck" placeholder="بله — قابل پیش‌آماده‌سازی">
+    <div class="fi-label">یادداشت</div>
+    <textarea class="fi" id="m-notes" rows="2" placeholder="هر چیز دیگه‌ای..."></textarea>
+  </div>
+
+  <button class="submit-btn" onclick="submitManual()">ذخیره سند</button>
+  <button class="cancel-btn" onclick="show('list')">انصراف</button>
+</div>
+
+<!-- ══ DETAIL ══ -->
+<div class="view" id="view-detail">
+  <button class="back-btn" onclick="show('list')">← بازگشت</button>
+  <div id="detail-content"></div>
+</div>
+
+<!-- ══ EDIT ══ -->
+<div class="view" id="view-edit">
+  <button class="back-btn" onclick="show('detail')">← بازگشت</button>
+  <div style="font-size:17px;font-weight:700;margin-bottom:14px">ویرایش سند</div>
+  <div id="edit-content"></div>
+</div>
+
+<!-- ══ SETTINGS ══ -->
+<div class="view" id="view-settings">
+  <div class="card">
+    <div style="font-size:16px;font-weight:700;margin-bottom:14px">تنظیمات</div>
+    <div class="fi-label">Anthropic API Key</div>
+    <input type="password" class="fi" id="api-key-input" placeholder="sk-ant-...">
+    <div id="key-status" class="key-status key-miss">کلید وارد نشده</div>
+    <button class="save-btn" onclick="saveKey()">ذخیره کلید</button>
+  </div>
+  <div class="card">
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">آمار آرشیو</div>
+    <div class="row"><span class="rl">کل اسناد</span><span class="rv" id="st-total">۰</span></div>
+    <div class="row"><span class="rl">تأیید شده</span><span class="rv" id="st-ok">۰</span></div>
+    <div class="row"><span class="rl">در بررسی</span><span class="rv" id="st-rev">۰</span></div>
+  </div>
+  <div class="card">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">نصب اپ</div>
+    <div style="font-size:12px;color:var(--muted);line-height:1.8">
+      برای نصب روی Home Screen:<br>
+      Chrome → منوی ⋮ → <b style="color:var(--text)">Add to Home screen</b><br>
+      <span style="color:var(--dim)">(فقط وقتی از سرور باز می‌شه فعاله)</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────
+const SAMPLE_DOC = {
+  id: 1000000001,
+  title: "هات داگ کلاسیک نیویورکی",
+  category: "رسپی",
+  status: "تأیید شده",
+  created_at: "۱۴۰۳/۳/۱",
+  image: null,
+  identity: {
+    concept_statement: "هات داگ خیابانی نیویورک با سوسیس گوشت گاو دودی، خردل زرد، رب پیاز کاراملی، و رلیش خیار ترش — سرو شده در نان نرم بخار‌پز. سریع، ارزان، معتبر. یک تجربه غذایی شهری واقعی.",
+    origin: "نیویورک، آمریکا — ریشه در فرهنگ غذای خیابانی قرن بیستم",
+    tags: ["هات داگ", "آمریکایی", "خیابانی", "فست فود", "گوشت گاو"]
+  },
+  recipe: {
+    ingredients: [
+      {name:"سوسیس گوشت گاو دودی", amount:"۱۲۰ گرم"},
+      {name:"نان هات داگ نرم", amount:"۱ عدد (۸۰ گرم)"},
+      {name:"خردل زرد", amount:"۱۵ گرم"},
+      {name:"رلیش خیار ترش", amount:"۲۰ گرم"},
+      {name:"پیاز کاراملی", amount:"۳۰ گرم"},
+      {name:"سس گوجه (اختیاری)", amount:"۱۰ گرم"}
+    ],
+    yield: "۱ پرس",
+    prep_time: "۳ دقیقه (پیاز از پیش آماده)",
+    cook_time: "۴ دقیقه"
+  },
+  sop: {
+    steps: [
+      "سوسیس رو روی گریل یا بخارپز ۳ دقیقه گرم کن تا خط گریل ایجاد بشه",
+      "نان رو ۴۵ ثانیه بخارپز کن — نباید خشک بشه",
+      "سوسیس رو داخل نان قرار بده",
+      "خردل زرد رو به صورت خط موجی روی سوسیس بکش",
+      "رلیش خیار ترش اضافه کن",
+      "پیاز کاراملی از پیش آماده رو اضافه کن",
+      "فوری سرو کن — نگه‌داری مجاز نیست"
+    ],
+    service_time_seconds: "240",
+    quality_checkpoints: [
+      "سوسیس باید داغ و دارای رنگ گریل باشه",
+      "نان نرم و بخاری — نه خشک",
+      "نسبت سس یکسان در همه پرس‌ها"
+    ]
+  },
+  operations: {
+    equipment: [
+      {name:"گریل فلت‌تاپ", spec:"۶۰×۴۰ سانتی‌متر، ۳ کیلووات"},
+      {name:"بخارپز نان", spec:"کانتر تاپ، ۱.۵ کیلووات"},
+      {name:"تانک نگه‌داری سوسیس گرم", spec:"ظرفیت ۲۴ سوسیس"},
+      {name:"دیسپنسر سس", spec:"برای خردل و رلیش"}
+    ],
+    staff_count: "۱ نفر",
+    staff_skill: "کارگر آموزش‌دیده پایه — ۲ ساعت آموزش کافیه",
+    space_sqm: "۴"
+  },
+  supply: {
+    key_ingredients: [
+      {ingredient:"سوسیس گوشت گاو دودی", source:"تأمین‌کننده داخلی با گواهی بهداشت", seasonal:false},
+      {ingredient:"نان هات داگ", source:"نانوایی قراردادی یا تأمین مرکزی", seasonal:false},
+      {ingredient:"رلیش خیار ترش", source:"واردات یا تولید داخلی", seasonal:false}
+    ],
+    import_dependency: "رلیش خیار ترش ممکنه وارداتی باشه — جایگزین داخلی ممکنه طعم رو تغییر بده",
+    alternatives: "سوسیس مرغ به عنوان گزینه سبک‌تر؛ نان گندم کامل برای مشتری سالم‌گرا"
+  },
+  financials: {
+    food_cost_per_serving: "۴۵,۰۰۰ تومان",
+    packaging_cost: "۸,۰۰۰ تومان",
+    total_cogs: "۵۳,۰۰۰ تومان",
+    suggested_price: "۱۵۰,۰۰۰ تومان",
+    food_cost_percent: "۳۵٪",
+    gross_margin: "۶۵٪ — ۹۷,۰۰۰ تومان",
+    item_role: "traffic_driver"
+  },
+  market: {
+    target_customer: "جوانان ۱۸-۳۵ ساله شهری، دانشجو و کارمند، آشنا با فرهنگ غذایی غربی",
+    demand_estimate: "بالا — هات داگ در تهران هنوز با کیفیت اجرا نشده. فضای خالی واقعی وجود داره",
+    order_rate_estimate: "تخمین ۴۰-۵۰٪ مشتریان — آیتم anchor منو",
+    price_sensitivity: "متوسط — مشتری برای کیفیت و تجربه پرداخت می‌کنه"
+  },
+  competition: {
+    similar_in_tehran: [
+      "فست فودهای زنجیره‌ای (هات داگ معمولی ۸۰-۱۰۰ هزار تومان — کیفیت پایین)",
+      "آمریکن داگ شهربازی‌ها (بسیار پایین‌تر از استاندارد)"
+    ],
+    our_differentiation: "سوسیس گوشت گاو دودی واقعی، نان بخارپز، مواد اولیه تازه — نه فریز شده",
+    market_gap: "هات داگ با کیفیت واقعی در تهران وجود نداره. کسی این رو درست انجام نداده"
+  },
+  risks: {
+    operational_risks: ["زمان سرویس زیر فشار سرویس — نیاز به پیش‌آماده‌سازی پیاز", "یکنواختی مقدار سس بین کارکنان مختلف"],
+    supply_risks: ["نوسان قیمت گوشت گاو", "کیفیت متغیر نان از نانوایی‌های مختلف"],
+    regulatory_risks: ["گواهی بهداشت برای سوسیس گوشت گاو الزامیه", "ترکیب مواد باید روی بسته‌بندی درج بشه"],
+    waste_risk: "سوسیس و نان ماندگاری کوتاه دارن — سیستم FIFO الزامیه، برآورد waste روزانه ۵-۸٪"
+  },
+  scalability: {
+    multi_branch_ready: "بله — رسپی استاندارد، آموزش ساده، تجهیزات کم",
+    seasonal_version: "بله — نسخه زمستانی با سوسیس ادویه‌دار / نسخه تابستانی با رلیش تازه",
+    city_adaptation: "حداقل — فقط تأمین‌کننده محلی برای نان تغییر می‌کنه",
+    central_kitchen_compatible: "بله — پیاز کاراملی و رلیش از آشپزخانه مرکزی قابل تأمینه"
+  }
+};
+
+let docs = JSON.parse(localStorage.getItem('fb_docs') || 'null');
+if (!docs) { docs = [SAMPLE_DOC]; saveDocs(); }
+let currentDoc = null;
+let genImageB64 = null;
+let manualImageB64 = null;
+
+const CATS = ['همه','رسپی','منو','مدل سرویس','تجهیزات','ایده فضا'];
+const SM = {
+  'ایده':      {c:'#6366f1',bg:'#6366f120'},
+  'در بررسی': {c:'#f59e0b',bg:'#f59e0b20'},
+  'تأیید شده':{c:'#10b981',bg:'#10b98120'},
+  'رد شده':   {c:'#ef4444',bg:'#ef444420'},
+};
+let currentFilter = 'همه';
+
+// ── Storage ───────────────────────────────────────────────────
+function saveDocs(){ localStorage.setItem('fb_docs', JSON.stringify(docs)); updateMeta(); }
+function getKey(){ return localStorage.getItem('fb_api_key')||''; }
+function saveKey(){
+  const k = document.getElementById('api-key-input').value.trim();
+  if(!k) return;
+  localStorage.setItem('fb_api_key', k);
+  document.getElementById('api-key-input').value='';
+  updateKeyStatus();
+  alert('کلید ذخیره شد ✓');
+}
+function updateKeyStatus(){
+  const el = document.getElementById('key-status');
+  if(getKey()){ el.className='key-status key-ok'; el.textContent='کلید ذخیره شده ✓'; }
+  else { el.className='key-status key-miss'; el.textContent='کلید وارد نشده'; }
+}
+function updateMeta(){
+  document.getElementById('doc-count').textContent=`هلدینگ آینه · ${docs.length} سند`;
+  document.getElementById('st-total').textContent=docs.length;
+  document.getElementById('st-ok').textContent=docs.filter(d=>d.status==='تأیید شده').length;
+  document.getElementById('st-rev').textContent=docs.filter(d=>d.status==='در بررسی').length;
+}
+
+// ── Views ─────────────────────────────────────────────────────
+function show(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.getElementById('view-'+name).classList.add('on');
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active','accent'));
+  if(name==='list'){document.querySelectorAll('.nb')[0].classList.add('active');renderList();}
+  if(name==='generate') document.querySelectorAll('.nb')[1].classList.add('accent');
+  if(name==='manual') document.querySelectorAll('.nb')[2].classList.add('accent');
+  window.scrollTo(0,0);
+}
+
+// ── Image Handling ────────────────────────────────────────────
+function handleImageSelect(input){
+  const file = input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    genImageB64 = e.target.result.split(',')[1];
+    const prev = document.getElementById('img-preview');
+    prev.src = e.target.result; prev.style.display='block';
+    document.getElementById('upload-area').style.display='none';
+  };
+  reader.readAsDataURL(file);
+}
+function handleManualImageSelect(input){
+  const file = input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    manualImageB64 = e.target.result;
+    const prev = document.getElementById('manual-img-preview');
+    prev.src = e.target.result; prev.style.display='block';
+    document.getElementById('manual-upload-area').style.display='none';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Generate ──────────────────────────────────────────────────
+const SYS = `تو یک F&B Manager متخصص با تجربه در بازار ایران هستی.
+از ورودی (متن، عکس، یا هر دو)، یک سند عملیاتی کامل بساز.
+فقط JSON خالص برگردون — بدون markdown، بدون کد بلاک.
+{
+  "title":"نام محصول",
+  "category":"رسپی|منو|مدل سرویس|تجهیزات|ایده فضا",
+  "identity":{"concept_statement":"","origin":"","tags":[]},
+  "recipe":{"ingredients":[{"name":"","amount":""}],"yield":"","prep_time":"","cook_time":""},
+  "sop":{"steps":[],"service_time_seconds":"","quality_checkpoints":[]},
+  "operations":{"equipment":[{"name":"","spec":""}],"staff_count":"","staff_skill":"","space_sqm":""},
+  "supply":{"key_ingredients":[{"ingredient":"","source":"","seasonal":false}],"import_dependency":"","alternatives":""},
+  "financials":{"food_cost_per_serving":"","packaging_cost":"","total_cogs":"","suggested_price":"","food_cost_percent":"","gross_margin":"","item_role":"traffic_driver|profit_center"},
+  "market":{"target_customer":"","demand_estimate":"","order_rate_estimate":"","price_sensitivity":""},
+  "competition":{"similar_in_tehran":[],"our_differentiation":"","market_gap":""},
+  "risks":{"operational_risks":[],"supply_risks":[],"regulatory_risks":[],"waste_risk":""},
+  "scalability":{"multi_branch_ready":"","seasonal_version":"","city_adaptation":"","central_kitchen_compatible":""}
+}`;
+
+async function generateDoc(){
+  const key = getKey();
+  if(!key){ alert('ابتدا API Key رو در تنظیمات وارد کن'); show('settings'); return; }
+  const text = document.getElementById('gen-input').value.trim();
+  if(!text && !genImageB64){ alert('متن یا عکس وارد کن'); return; }
+
+  const btn = document.getElementById('gen-btn');
+  const err = document.getElementById('gen-err');
+  btn.disabled=true; btn.innerHTML='در حال پردازش... <span class="spin"></span>';
+  err.style.display='none';
+
+  // Build message content
+  const content = [];
+  if(genImageB64) content.push({type:'image',source:{type:'base64',media_type:'image/jpeg',data:genImageB64}});
+  content.push({type:'text',text: text || 'این تصویر رو تحلیل کن و سند کامل بساز'});
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYS,messages:[{role:'user',content}]})
+    });
+    const data = await res.json();
+    if(data.error) throw new Error(data.error.message);
+    const raw = data.content?.map(i=>i.text||'').join('')||'';
+    const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
+    const doc = {...parsed, id:Date.now(), status:'ایده', created_at:new Date().toLocaleDateString('fa-IR'), image: genImageB64 ? 'data:image/jpeg;base64,'+genImageB64 : null};
+    docs.unshift(doc); saveDocs();
+    document.getElementById('gen-input').value='';
+    genImageB64=null;
+    document.getElementById('img-preview').style.display='none';
+    document.getElementById('upload-area').style.display='block';
+    currentDoc=doc; renderDetail(doc); show('detail');
+  } catch(e){
+    err.textContent='خطا: '+(e.message||'دوباره امتحان کن');
+    err.style.display='block';
+  } finally {
+    btn.disabled=false; btn.textContent='ساخت سند با AI';
+  }
+}
+
+// ── Manual Entry ──────────────────────────────────────────────
+function addField(listId, placeholder){
+  const list = document.getElementById(listId);
+  const div = document.createElement('div');
+  div.className='dynamic-field';
+  div.innerHTML=`<input class="fi" type="text" placeholder="${placeholder}" style="margin:0"><button onclick="this.parentElement.remove()">×</button>`;
+  list.appendChild(div);
+}
+function getFields(listId){ return [...document.querySelectorAll(`#${listId} input`)].map(i=>i.value.trim()).filter(Boolean); }
+
+function submitManual(){
+  const title = document.getElementById('m-title').value.trim();
+  if(!title){ alert('نام محصول الزامیه'); return; }
+  const doc = {
+    id: Date.now(),
+    title,
+    category: document.getElementById('m-category').value,
+    status: 'ایده',
+    created_at: new Date().toLocaleDateString('fa-IR'),
+    image: manualImageB64 || null,
+    identity:{
+      concept_statement: document.getElementById('m-concept').value,
+      origin: document.getElementById('m-origin').value,
+      tags: document.getElementById('m-tags').value.split(',').map(t=>t.trim()).filter(Boolean)
+    },
+    recipe:{
+      ingredients: getFields('ingredients-list').map(v=>({name:v,amount:''})),
+      yield: document.getElementById('m-yield').value,
+      prep_time: document.getElementById('m-prep').value,
+      cook_time: document.getElementById('m-cook').value
+    },
+    sop:{
+      steps: getFields('steps-list'),
+      service_time_seconds: document.getElementById('m-svctime').value,
+      quality_checkpoints: getFields('qc-list')
+    },
+    operations:{
+      equipment: getFields('equip-list').map(v=>({name:v,spec:''})),
+      staff_count: document.getElementById('m-staff').value,
+      staff_skill: document.getElementById('m-skill').value,
+      space_sqm: document.getElementById('m-space').value
+    },
+    supply:{key_ingredients:[],import_dependency:'',alternatives:''},
+    financials:{
+      food_cost_per_serving: document.getElementById('m-fc').value,
+      packaging_cost: document.getElementById('m-pkg').value,
+      total_cogs:'',
+      suggested_price: document.getElementById('m-price').value,
+      food_cost_percent: document.getElementById('m-fcp').value,
+      gross_margin: document.getElementById('m-margin').value,
+      item_role: document.getElementById('m-role').value
+    },
+    market:{
+      target_customer: document.getElementById('m-target').value,
+      demand_estimate: document.getElementById('m-demand').value,
+      order_rate_estimate:'', price_sensitivity:''
+    },
+    competition:{
+      similar_in_tehran: getFields('comp-list'),
+      our_differentiation: document.getElementById('m-diff').value,
+      market_gap:''
+    },
+    risks:{operational_risks:getFields('risks-list'),supply_risks:[],regulatory_risks:[],waste_risk:''},
+    scalability:{
+      multi_branch_ready: document.getElementById('m-branch').value,
+      seasonal_version:'',
+      city_adaptation:'',
+      central_kitchen_compatible: document.getElementById('m-ck').value
+    }
+  };
+  docs.unshift(doc); saveDocs();
+  manualImageB64=null;
+  currentDoc=doc; renderDetail(doc); show('detail');
+}
+
+// ── List ──────────────────────────────────────────────────────
+function renderList(){
+  renderFilters();
+  const q = document.getElementById('search-input').value.trim();
+  const filtered = docs.filter(d=>{
+    const catOk = currentFilter==='همه' || d.category===currentFilter;
+    const srOk = !q||(d.title||'').includes(q)||(d.identity?.tags||[]).some(t=>t.includes(q));
+    return catOk && srOk;
+  });
+  const grid = document.getElementById('doc-grid');
+  if(!filtered.length){ grid.innerHTML=`<div class="empty"><div style="font-size:36px;margin-bottom:10px">📂</div>سندی پیدا نشد</div>`; return; }
+  grid.innerHTML = filtered.map(doc=>{
+    const st=SM[doc.status]||SM['ایده'];
+    const tags=(doc.identity?.tags||[]).slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('');
+    const thumb = doc.image ? `<img class="dc-thumb" src="${doc.image}" alt="">` : '';
+    return `<div class="dc" onclick="openDoc(${doc.id})">
+      ${thumb}
+      <div class="dc-top">
+        <div class="dc-title">${doc.title||'—'}</div>
+        <span class="st-badge" style="background:${st.bg};color:${st.c}">${doc.status}</span>
+      </div>
+      <div class="dc-cat">${doc.category||''}</div>
+      <div class="dc-desc">${doc.identity?.concept_statement||''}</div>
+      <div class="tags">${tags}</div>
+      <div class="dc-date">${doc.created_at||''}</div>
+    </div>`;
+  }).join('');
+}
+function renderFilters(){
+  document.getElementById('filter-row').innerHTML = CATS.map(c=>
+    `<button class="fbtn ${c===currentFilter?'active':''}" onclick="setFilter('${c}')">${c}</button>`
+  ).join('');
+}
+function setFilter(c){ currentFilter=c; renderList(); }
+function openDoc(id){
+  const doc=docs.find(d=>d.id===id); if(!doc) return;
+  currentDoc=doc; renderDetail(doc); show('detail');
+}
+
+// ── Detail ────────────────────────────────────────────────────
+function renderDetail(doc){
+  const st=SM[doc.status]||SM['ایده'];
+  const statusBtns=Object.keys(SM).map(s=>`<button class="sbtn" onclick="setStatus(${doc.id},'${s}')" style="background:${doc.status===s?SM[s].c:'#1e1e1e'};color:${doc.status===s?'#fff':'#666'}">${s}</button>`).join('');
+  const tags=(doc.identity?.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+  const imgHtml = doc.image ? `<img class="doc-img" src="${doc.image}" alt="">` : '';
+
+  const ings=(doc.recipe?.ingredients||[]).map(i=>`<div class="row"><span class="rl">${i.name}</span><span class="rv">${i.amount}</span></div>`).join('');
+  const steps=(doc.sop?.steps||[]).map((s,i)=>`<div class="step"><span class="sn">${i+1}</span><span class="st">${s}</span></div>`).join('');
+  const qcs=(doc.sop?.quality_checkpoints||[]).map(q=>`<div class="bullet"><span class="bd ac">·</span><span class="bt">${q}</span></div>`).join('');
+  const eqs=(doc.operations?.equipment||[]).map(e=>`<div class="eq-c"><div class="eq-n">${e.name}</div><div class="eq-s">${e.spec||''}</div></div>`).join('');
+  const supRows=(doc.supply?.key_ingredients||[]).map(i=>`<div class="supply-row"><span class="sn2">${i.ingredient}</span><div class="sr"><span class="ssrc">${i.source||''}</span>${i.seasonal?'<span class="sbadge">فصلی</span>':''}</div></div>`).join('');
+  const comps=(doc.competition?.similar_in_tehran||[]).map(c=>`<div class="bullet"><span class="bd ac">·</span><span class="bt">${c}</span></div>`).join('');
+  const opR=(doc.risks?.operational_risks||[]).map(r=>`<div class="bullet"><span class="bd rd">·</span><span class="bt">${r}</span></div>`).join('');
+  const supR=(doc.risks?.supply_risks||[]).map(r=>`<div class="bullet"><span class="bd rd">·</span><span class="bt">${r}</span></div>`).join('');
+  const regR=(doc.risks?.regulatory_risks||[]).map(r=>`<div class="bullet"><span class="bd rd">·</span><span class="bt">${r}</span></div>`).join('');
+  const fcPct=parseFloat(doc.financials?.food_cost_percent)||0;
+  const roleIsProfit=doc.financials?.item_role==='profit_center';
+
+  document.getElementById('detail-content').innerHTML=`
+    <div class="card">
+      ${imgHtml}
+      <div style="font-size:20px;font-weight:700;color:#fff">${doc.title||'—'}</div>
+      <div style="font-size:11px;color:var(--accent);margin-top:3px">${doc.category||''} · ${doc.created_at||''}</div>
+      <div class="srow">${statusBtns}</div>
+      <div style="font-size:13px;color:#aaa;line-height:1.8;margin-top:12px">${doc.identity?.concept_statement||''}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:5px">منشأ: ${doc.identity?.origin||'—'}</div>
+      <div class="tags" style="margin-top:8px">${tags}</div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button onclick="startEdit(${doc.id})" style="padding:8px 14px;background:#1e1e1e;color:var(--text);border-radius:8px;font-size:12px">✏️ ویرایش</button>
+        <button onclick="deleteDoc(${doc.id})" style="padding:8px 14px;background:#1a0a0a;color:var(--red);border-radius:8px;font-size:12px;border:1px solid #2a1a1a">حذف</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۱. رسپی استاندارد <span class="sec-sub">· مواد با واحد دقیق</span></div>
+      <div class="slabel">مواد اولیه</div>${ings}
+      <div class="g3" style="margin-top:12px">
+        <div class="metric"><div class="ml">خروجی</div><div class="mv">${doc.recipe?.yield||'—'}</div></div>
+        <div class="metric"><div class="ml">آماده‌سازی</div><div class="mv">${doc.recipe?.prep_time||'—'}</div></div>
+        <div class="metric"><div class="ml">پخت</div><div class="mv">${doc.recipe?.cook_time||'—'}</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۲. روش اجرا (SOP) <span class="sec-sub">· مراحل استاندارد</span></div>
+      <div class="slabel">مراحل تولید</div>${steps}
+      <div class="g2" style="margin-top:12px">
+        <div class="metric"><div class="ml">زمان سرویس</div><div class="mv ac">${doc.sop?.service_time_seconds||'—'} ثانیه</div></div>
+        <div><div class="slabel">کنترل کیفیت</div>${qcs}</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۳. نیازهای عملیاتی <span class="sec-sub">· تجهیزات · نیرو · فضا</span></div>
+      <div class="slabel">تجهیزات</div><div class="eq-g">${eqs}</div>
+      <div class="g3">
+        <div class="metric"><div class="ml">تعداد نیرو</div><div class="mv">${doc.operations?.staff_count||'—'}</div></div>
+        <div class="metric"><div class="ml">سطح مهارت</div><div class="mv">${doc.operations?.staff_skill||'—'}</div></div>
+        <div class="metric"><div class="ml">فضا</div><div class="mv">${doc.operations?.space_sqm||'—'} م²</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۴. مواد اولیه و تأمین</div>
+      <div class="slabel">مواد کلیدی</div>${supRows}
+      <div class="g2" style="margin-top:12px">
+        <div><div class="slabel">وابستگی واردات</div><p class="info-p">${doc.supply?.import_dependency||'—'}</p></div>
+        <div><div class="slabel">جایگزین‌ها</div><p class="info-p">${doc.supply?.alternatives||'—'}</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۵. بهای تمام‌شده و سودآوری</div>
+      <div class="g2">
+        <div class="metric"><div class="ml">هزینه مواد/پرس</div><div class="mv">${doc.financials?.food_cost_per_serving||'—'}</div></div>
+        <div class="metric"><div class="ml">هزینه بسته‌بندی</div><div class="mv">${doc.financials?.packaging_cost||'—'}</div></div>
+      </div>
+      <div class="g3">
+        <div class="metric"><div class="ml">بهای تمام‌شده</div><div class="mv ac">${doc.financials?.total_cogs||'—'}</div></div>
+        <div class="metric"><div class="ml">قیمت فروش</div><div class="mv">${doc.financials?.suggested_price||'—'}</div></div>
+        <div class="metric"><div class="ml">Food Cost %</div><div class="mv ${fcPct>30?'rd':'ac'}">${doc.financials?.food_cost_percent||'—'}</div></div>
+      </div>
+      <div class="metric" style="margin-bottom:10px"><div class="ml">حاشیه سود</div><div class="mv gr">${doc.financials?.gross_margin||'—'}</div></div>
+      <div class="slabel">نقش آیتم در منو</div>
+      <span class="role-b" style="background:${roleIsProfit?'#10b98120':'#6366f120'};color:${roleIsProfit?'#10b981':'#6366f1'}">${roleIsProfit?'Profit Center — سودآور اصلی':'Traffic Driver — محرک فروش'}</span>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۶. تحلیل بازار و مشتری</div>
+      <div class="row"><span class="rl">مشتری هدف</span><span class="rv">${doc.market?.target_customer||'—'}</span></div>
+      <div class="row"><span class="rl">تخمین تقاضا</span><span class="rv">${doc.market?.demand_estimate||'—'}</span></div>
+      <div class="row"><span class="rl">نرخ سفارش</span><span class="rv">${doc.market?.order_rate_estimate||'—'}</span></div>
+      <div class="row"><span class="rl">حساسیت قیمتی</span><span class="rv">${doc.market?.price_sensitivity||'—'}</span></div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۷. رقبا و موقعیت بازار</div>
+      <div class="slabel">مشابه‌ها در تهران</div>${comps}
+      <div class="g2" style="margin-top:12px">
+        <div><div class="slabel">تمایز ما</div><p class="info-p">${doc.competition?.our_differentiation||'—'}</p></div>
+        <div><div class="slabel">فضای خالی بازار</div><p class="info-p">${doc.competition?.market_gap||'—'}</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۸. ریسک‌ها و محدودیت‌ها</div>
+      <div class="g2">
+        <div><div class="slabel">عملیاتی</div>${opR}</div>
+        <div><div class="slabel">تأمین</div>${supR}</div>
+      </div>
+      <div style="margin-top:10px"><div class="slabel">قانونی</div>${regR}</div>
+      <div style="margin-top:10px"><div class="slabel">ریسک ضایعات</div><p class="info-p">${doc.risks?.waste_risk||'—'}</p></div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">۹. پتانسیل توسعه</div>
+      <div class="sc-g">
+        <div class="sc-c"><div class="sc-l">آماده چند شعبه</div><div class="sc-v">${doc.scalability?.multi_branch_ready||'—'}</div></div>
+        <div class="sc-c"><div class="sc-l">نسخه فصلی</div><div class="sc-v">${doc.scalability?.seasonal_version||'—'}</div></div>
+        <div class="sc-c"><div class="sc-l">تطبیق شهرها</div><div class="sc-v">${doc.scalability?.city_adaptation||'—'}</div></div>
+        <div class="sc-c"><div class="sc-l">آشپزخانه مرکزی</div><div class="sc-v">${doc.scalability?.central_kitchen_compatible||'—'}</div></div>
+      </div>
+    </div>`;
+}
+
+function setStatus(id, status){
+  docs=docs.map(d=>d.id===id?{...d,status}:d); saveDocs();
+  const doc=docs.find(d=>d.id===id); if(doc){ currentDoc=doc; renderDetail(doc); }
+}
+function deleteDoc(id){
+  if(!confirm('حذف بشه؟')) return;
+  docs=docs.filter(d=>d.id!==id); saveDocs(); show('list');
+}
+
+// ── Edit ──────────────────────────────────────────────────────
+function startEdit(id){
+  const doc=docs.find(d=>d.id===id); if(!doc) return;
+  currentDoc=doc;
+  document.getElementById('edit-content').innerHTML=`
+    <div class="form-section">
+      <div class="form-section-title">اطلاعات اصلی</div>
+      <div class="fi-label">نام</div><input class="fi" id="e-title" value="${doc.title||''}">
+      <div class="fi-label">دسته‌بندی</div>
+      <select class="fi" id="e-cat">
+        ${['رسپی','منو','مدل سرویس','تجهیزات','ایده فضا'].map(c=>`<option ${doc.category===c?'selected':''}>${c}</option>`).join('')}
+      </select>
+      <div class="fi-label">توضیح ایده</div>
+      <textarea class="fi" id="e-concept" rows="3">${doc.identity?.concept_statement||''}</textarea>
+      <div class="fi-label">منشأ</div><input class="fi" id="e-origin" value="${doc.identity?.origin||''}">
+      <div class="fi-label">تگ‌ها (با کاما)</div><input class="fi" id="e-tags" value="${(doc.identity?.tags||[]).join(', ')}">
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">مالی</div>
+      <div class="fi-row">
+        <div><div class="fi-label">هزینه مواد</div><input class="fi" id="e-fc" value="${doc.financials?.food_cost_per_serving||''}"></div>
+        <div><div class="fi-label">قیمت فروش</div><input class="fi" id="e-price" value="${doc.financials?.suggested_price||''}"></div>
+      </div>
+      <div class="fi-row">
+        <div><div class="fi-label">Food Cost %</div><input class="fi" id="e-fcp" value="${doc.financials?.food_cost_percent||''}"></div>
+        <div><div class="fi-label">حاشیه سود</div><input class="fi" id="e-margin" value="${doc.financials?.gross_margin||''}"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">یادداشت اضافه</div>
+      <textarea class="fi" id="e-notes" rows="3" placeholder="هر چیزی که می‌خوای اضافه کنی...">${doc.notes||''}</textarea>
+    </div>
+    <button class="submit-btn" onclick="saveEdit(${id})">ذخیره تغییرات</button>
+    <button class="cancel-btn" onclick="show('detail')">انصراف</button>
+  `;
+  show('edit');
+}
+function saveEdit(id){
+  docs=docs.map(d=>{
+    if(d.id!==id) return d;
+    return {...d,
+      title: document.getElementById('e-title').value,
+      category: document.getElementById('e-cat').value,
+      notes: document.getElementById('e-notes').value,
+      identity:{...d.identity,
+        concept_statement: document.getElementById('e-concept').value,
+        origin: document.getElementById('e-origin').value,
+        tags: document.getElementById('e-tags').value.split(',').map(t=>t.trim()).filter(Boolean)
+      },
+      financials:{...d.financials,
+        food_cost_per_serving: document.getElementById('e-fc').value,
+        suggested_price: document.getElementById('e-price').value,
+        food_cost_percent: document.getElementById('e-fcp').value,
+        gross_margin: document.getElementById('e-margin').value,
+      }
+    };
+  });
+  saveDocs();
+  currentDoc=docs.find(d=>d.id===id);
+  renderDetail(currentDoc);
+  show('detail');
+}
+
+// ── Init ──────────────────────────────────────────────────────
+updateKeyStatus(); updateMeta(); renderList();
+</script>
+</body>
+</html>
