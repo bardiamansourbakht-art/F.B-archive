@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0a0a0a">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
 <title>آرشیو F&B · هلدینگ آینه</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -18,35 +17,22 @@
 html,body{background:var(--bg);color:var(--text);font-family:Tahoma,sans-serif;min-height:100vh;overflow-x:hidden}
 button,input,textarea,select{font-family:inherit;outline:none}
 button{cursor:pointer;border:none}
-
-/* ── Bottom Nav ── */
-.bnav{position:fixed;bottom:0;left:0;right:0;z-index:300;background:#0f0f0f;border-top:1px solid var(--border);display:flex;padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
-.bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;color:var(--muted);font-size:9px;padding:4px 0}
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:300;background:#0f0f0f;border-top:1px solid var(--border);display:flex;padding:7px 0 calc(7px + env(safe-area-inset-bottom));overflow-x:auto}
+.bn{flex:1;min-width:60px;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;color:var(--muted);font-size:8px;padding:4px 2px}
 .bn.active{color:var(--accent)}
-.bn-icon{font-size:20px;line-height:1}
-
-/* ── Top Bar ── */
-.topbar{position:sticky;top:0;z-index:200;background:#0f0f0f;border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;min-height:52px}
-.tb-title{font-size:16px;font-weight:700;color:#fff}
+.bn-icon{font-size:18px;line-height:1}
+.topbar{position:sticky;top:0;z-index:200;background:#0f0f0f;border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;min-height:50px}
+.tb-title{font-size:15px;font-weight:700;color:#fff}
 .tb-sub{font-size:10px;color:var(--dim);margin-top:1px}
-
-/* ── Views ── */
 .view{display:none;padding:14px 14px 100px;max-width:720px;margin:0 auto}
 .view.on{display:block}
-
-/* ── Cards ── */
 .card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
 .card-title{font-size:14px;font-weight:700;color:var(--text);padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:14px}
 .card-sub{font-size:10px;color:var(--muted);font-weight:400;margin-right:5px}
-
-/* ── Form Elements ── */
 .fi{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:9px;padding:11px 13px;color:var(--text);font-size:13px;margin-bottom:8px;display:block}
 .fi::placeholder{color:var(--dim)}
 .fi-label{font-size:11px;color:var(--muted);margin-bottom:4px;display:block}
 .fi-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.fi-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-
-/* ── Buttons ── */
 .btn{padding:12px 16px;border-radius:10px;font-size:13px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:6px;justify-content:center}
 .btn-primary{background:var(--accent);color:#fff;width:100%}
 .btn-primary:disabled{background:var(--s2);color:var(--dim);cursor:not-allowed}
@@ -54,13 +40,9 @@ button{cursor:pointer;border:none}
 .btn-ghost{background:var(--s2);color:var(--muted);width:100%}
 .btn-danger{background:#1a0808;color:var(--red);border:1px solid #2a1010}
 .btn-sm{padding:7px 12px;font-size:11px;border-radius:8px}
-
-/* ── Status badges ── */
 .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600}
 .tag-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:var(--s2);border-radius:20px;font-size:11px;color:var(--muted);border:1px solid var(--border)}
 .tag-pill.active{background:#6366f115;color:var(--accent);border-color:#6366f140}
-
-/* ── Misc ── */
 .slabel{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px;display:block;margin-top:12px}
 .slabel:first-child{margin-top:0}
 .divrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #181818;gap:10px;align-items:center}
@@ -82,8 +64,6 @@ button{cursor:pointer;border:none}
 .empty-icon{font-size:38px;margin-bottom:10px}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid #fff4;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle;margin-left:5px}
 @keyframes sp{to{transform:rotate(360deg)}}
-
-/* ── Search / Filter ── */
 .search-wrap{position:relative;margin-bottom:10px}
 .search-wrap input{width:100%;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:11px 14px 11px 36px;color:var(--text);font-size:13px}
 .search-wrap input::placeholder{color:var(--dim)}
@@ -92,10 +72,7 @@ button{cursor:pointer;border:none}
 .frow::-webkit-scrollbar{display:none}
 .fbtn{padding:6px 13px;border-radius:20px;font-size:11px;white-space:nowrap;background:var(--s1);color:var(--muted);border:1px solid var(--border);flex-shrink:0}
 .fbtn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-
-/* ── Doc Cards ── */
-.dc{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:14px;cursor:pointer;margin-bottom:10px;transition:.1s}
-.dc:active{opacity:.8}
+.dc{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:14px;cursor:pointer;margin-bottom:10px}
 .dc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:5px}
 .dc-title{font-size:14px;font-weight:600;color:#fff;line-height:1.4}
 .dc-cat{font-size:11px;color:var(--accent);margin-bottom:5px}
@@ -103,20 +80,11 @@ button{cursor:pointer;border:none}
 .dc-thumb{width:100%;height:130px;object-fit:cover;border-radius:9px;margin-bottom:10px}
 .dc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:9px}
 .fc-chip{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600}
-
-/* ── Food Cost Calculator ── */
-.calc-wrap{background:var(--s2);border-radius:12px;padding:14px;margin-bottom:10px}
 .calc-result{background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid #6366f130;border-radius:12px;padding:16px;margin-top:10px}
 .calc-big{font-size:28px;font-weight:800;line-height:1}
 .fc-bar{height:8px;border-radius:4px;background:var(--s3);overflow:hidden;margin:10px 0}
 .fc-fill{height:100%;border-radius:4px;transition:width .5s ease}
-.ing-calc-row{display:flex;gap:6px;align-items:center;margin-bottom:8px;background:var(--s2);border-radius:9px;padding:10px 12px}
-.ing-calc-name{font-size:12px;color:var(--text);flex:1}
-.ing-calc-cost{font-size:12px;color:var(--accent);font-weight:600;white-space:nowrap}
-.ing-calc-inputs{display:flex;gap:6px;margin-top:6px}
 .calc-input{background:var(--s1);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;width:100%}
-
-/* ── Ingredient Library ── */
 .ing-card{background:var(--s1);border:1px solid var(--border);border-radius:11px;padding:13px;margin-bottom:9px;cursor:pointer}
 .ing-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .ing-name{font-size:14px;font-weight:600;color:#fff}
@@ -124,46 +92,50 @@ button{cursor:pointer;border:none}
 .ing-price{font-size:18px;font-weight:700;color:var(--accent);margin-top:6px}
 .ing-price-unit{font-size:11px;color:var(--muted);font-weight:400;margin-right:3px}
 .ing-meta{font-size:11px;color:var(--muted);margin-top:5px}
-.ing-detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #181818}
-.storage-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;font-size:11px}
-
-/* ── Compare ── */
-.compare-col{flex:1;min-width:0}
 .compare-header{background:var(--s2);border-radius:10px;padding:12px;text-align:center;margin-bottom:10px}
 .compare-row{display:flex;gap:10px;margin-bottom:8px}
 .compare-cell{flex:1;background:var(--s2);border-radius:8px;padding:10px;min-width:0}
 .compare-label{font-size:10px;color:var(--muted);margin-bottom:3px}
 .compare-value{font-size:12px;color:var(--text);word-break:break-word}
 .compare-winner{border:1px solid var(--green) !important;background:#10b98110 !important}
-
-/* ── Image Upload ── */
 .img-upload-area{border:1.5px dashed var(--border);border-radius:10px;padding:16px;text-align:center;color:var(--muted);font-size:13px;cursor:pointer;margin-bottom:10px;position:relative;background:var(--s2)}
 .img-upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .img-preview{width:100%;border-radius:10px;margin-bottom:10px;max-height:200px;object-fit:cover;display:none}
 .doc-img{width:100%;border-radius:10px;margin-bottom:14px;max-height:220px;object-fit:cover}
-
-/* ── Dynamic fields ── */
-.dyn-field{display:flex;gap:6px;margin-bottom:6px;align-items:center}
-.dyn-field input,.dyn-field select{flex:1;margin:0}
-.dyn-field .rm-btn{background:var(--s2);color:var(--red);border-radius:7px;padding:9px 11px;font-size:13px;border:1px solid var(--border);flex-shrink:0}
 .add-row-btn{background:var(--s2);color:var(--accent);border:1px dashed #6366f140;border-radius:8px;padding:9px;width:100%;font-size:12px;margin-bottom:10px}
-
-/* ── Settings ── */
 .key-ok{background:#10b98115;color:var(--green);padding:7px 11px;border-radius:7px;font-size:11px;margin-top:7px}
 .key-miss{background:#ef444415;color:var(--red);padding:7px 11px;border-radius:7px;font-size:11px;margin-top:7px}
-
-/* ── Back btn ── */
 .back-btn{background:none;color:var(--accent);font-size:13px;padding:0;margin-bottom:14px;display:flex;align-items:center;gap:4px}
 
-/* ── Tabs ── */
-.tabs{display:flex;gap:0;background:var(--s2);border-radius:10px;padding:3px;margin-bottom:16px}
-.tab{flex:1;padding:8px;border-radius:8px;font-size:12px;background:none;color:var(--muted);text-align:center}
-.tab.active{background:var(--s1);color:var(--text);font-weight:600;box-shadow:0 1px 4px #0006}
+/* Dashboard */
+.dash-hero{background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;padding:20px;margin-bottom:14px;border:1px solid #6366f120}
+.dash-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.dash-stat{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:14px}
+.dash-stat-val{font-size:24px;font-weight:800}
+.dash-stat-label{font-size:11px;color:var(--muted);margin-top:4px}
+.alert-card{background:#f59e0b10;border:1px solid #f59e0b30;border-radius:12px;padding:13px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.alert-icon{font-size:18px}
+.alert-text{font-size:12px;color:#ddd;line-height:1.6}
+
+/* Cards (inspiration) */
+.insp-card{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:14px;margin-bottom:10px}
+.insp-top{display:flex;gap:10px;align-items:flex-start}
+.insp-emoji{font-size:28px;flex-shrink:0}
+.insp-name{font-size:14px;font-weight:700;color:#fff}
+.insp-culture{font-size:11px;color:var(--accent);margin-top:2px}
+.insp-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-top:8px}
+.insp-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.culture-section{margin-bottom:8px}
+.culture-header{display:flex;align-items:center;gap:8px;padding:10px 0;font-size:14px;font-weight:700;color:#fff;cursor:pointer}
+.culture-flag{font-size:18px}
+.culture-count{font-size:11px;color:var(--muted);font-weight:400;margin-right:auto}
+.culture-chevron{font-size:12px;color:var(--muted);transition:.2s}
+.culture-body{display:none}
+.culture-body.open{display:block}
 </style>
 </head>
 <body>
 
-<!-- ══ TOP BAR ══ -->
 <div class="topbar" id="topbar">
   <div>
     <div class="tb-title" id="tb-title">آرشیو F&B</div>
@@ -172,17 +144,61 @@ button{cursor:pointer;border:none}
   <div id="tb-actions"></div>
 </div>
 
-<!-- ══ VIEWS ══ -->
+<!-- DASHBOARD -->
+<div class="view on" id="view-dashboard">
+  <div class="dash-hero">
+    <div style="font-size:11px;color:#8888cc;margin-bottom:4px">هلدینگ آینه</div>
+    <div style="font-size:18px;font-weight:700;color:#fff">روح تهران در آینه حال</div>
+    <div style="font-size:11px;color:#9999bb;margin-top:6px">تهران — شهر پایلوت</div>
+  </div>
+
+  <div class="dash-stat-grid">
+    <div class="dash-stat"><div class="dash-stat-val ac" id="dash-total-docs">۰</div><div class="dash-stat-label">کل اسناد</div></div>
+    <div class="dash-stat"><div class="dash-stat-val gr" id="dash-approved">۰</div><div class="dash-stat-label">تأیید شده</div></div>
+    <div class="dash-stat"><div class="dash-stat-val am" id="dash-review">۰</div><div class="dash-stat-label">در بررسی</div></div>
+    <div class="dash-stat"><div class="dash-stat-val" id="dash-avg-fc">—</div><div class="dash-stat-label">میانگین Food Cost</div></div>
+  </div>
+
+  <div class="card" id="dash-alerts-card" style="display:none">
+    <div class="card-title">⚠️ هشدارها <span class="card-sub">· نیاز به توجه</span></div>
+    <div id="dash-alerts"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📌 دسترسی سریع</div>
+    <div class="g2">
+      <button class="btn" style="background:var(--s2);color:var(--text);flex-direction:column;padding:16px 8px" onclick="show('generate')">
+        <span style="font-size:22px">✨</span><span style="font-size:11px">ثبت ایده با AI</span>
+      </button>
+      <button class="btn" style="background:var(--s2);color:var(--text);flex-direction:column;padding:16px 8px" onclick="show('calc')">
+        <span style="font-size:22px">🧮</span><span style="font-size:11px">Food Cost</span>
+      </button>
+      <button class="btn" style="background:var(--s2);color:var(--text);flex-direction:column;padding:16px 8px" onclick="show('cards')">
+        <span style="font-size:22px">💡</span><span style="font-size:11px">۱۰۰ ایده الهام</span>
+      </button>
+      <button class="btn" style="background:var(--s2);color:var(--text);flex-direction:column;padding:16px 8px" onclick="show('ings')">
+        <span style="font-size:22px">🥩</span><span style="font-size:11px">مواد اولیه</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🕐 آخرین اسناد</div>
+    <div id="dash-recent"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💰 گران‌ترین مواد اولیه</div>
+    <div id="dash-expensive-ings"></div>
+  </div>
+</div>
 
 <!-- LIST -->
-<div class="view on" id="view-list">
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="list-search" placeholder="جستجو در آرشیو..." oninput="renderList()">
-  </div>
+<div class="view" id="view-list">
+  <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="list-search" placeholder="جستجو در آرشیو..." oninput="renderList()"></div>
   <div class="frow" id="list-cats"></div>
   <div class="frow" id="list-tags"></div>
-  <div id="list-sort" style="display:flex;gap:6px;margin-bottom:12px;align-items:center">
+  <div style="display:flex;gap:6px;margin-bottom:12px;align-items:center">
     <span style="font-size:11px;color:var(--muted)">مرتب‌سازی:</span>
     <button class="fbtn active" id="sort-new" onclick="setSort('new')">جدیدترین</button>
     <button class="fbtn" id="sort-fc" onclick="setSort('fc')">Food Cost</button>
@@ -202,12 +218,9 @@ button{cursor:pointer;border:none}
   <div class="card">
     <div style="font-size:17px;font-weight:700;margin-bottom:4px">ثبت ایده با AI</div>
     <div style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.7">متن بنویس یا عکس آپلود کن — AI سند کامل می‌سازه</div>
-    <div class="img-upload-area" id="gen-upload-area">
-      <input type="file" accept="image/*" id="gen-img-input" onchange="handleGenImage(this)">
-      📷 عکس یا اسکرین‌شات (اختیاری)
-    </div>
+    <div class="img-upload-area" id="gen-upload-area"><input type="file" accept="image/*" id="gen-img-input" onchange="handleGenImage(this)">📷 عکس یا اسکرین‌شات (اختیاری)</div>
     <img id="gen-img-preview" class="img-preview" alt="">
-    <textarea class="fi" id="gen-text" rows="4" placeholder="توضیح ایده‌ات... مثلاً: یه هات داگ با سوسیس دودی و سس مایو ترافل دیدم"></textarea>
+    <textarea class="fi" id="gen-text" rows="4" placeholder="توضیح ایده‌ات..."></textarea>
     <div id="gen-err" style="color:var(--red);font-size:12px;margin-top:6px;display:none"></div>
     <button class="btn btn-primary" id="gen-btn" onclick="generateDoc()" style="margin-top:8px">ساخت سند با AI</button>
   </div>
@@ -217,61 +230,35 @@ button{cursor:pointer;border:none}
 <div class="view" id="view-calc">
   <div class="card">
     <div class="card-title">ماشین حساب Food Cost</div>
-
-    <!-- Product name + price -->
     <div class="fi-label">نام محصول</div>
     <input class="fi" id="calc-name" placeholder="مثلاً: هات داگ نیویورکی">
     <div class="fi-row">
-      <div>
-        <div class="fi-label">قیمت فروش (تومان)</div>
-        <input class="fi" id="calc-sell" type="number" placeholder="۲۵۰۰۰۰" oninput="recalc()">
-      </div>
-      <div>
-        <div class="fi-label">هزینه بسته‌بندی (تومان)</div>
-        <input class="fi" id="calc-pkg" type="number" placeholder="۸۰۰۰" oninput="recalc()">
-      </div>
+      <div><div class="fi-label">قیمت فروش (تومان)</div><input class="fi" id="calc-sell" type="number" placeholder="۲۵۰۰۰۰" oninput="recalc()"></div>
+      <div><div class="fi-label">هزینه بسته‌بندی (تومان)</div><input class="fi" id="calc-pkg" type="number" placeholder="۸۰۰۰" oninput="recalc()"></div>
     </div>
-
-    <!-- Overhead % -->
-    <div class="fi-label">درصد هزینه‌های سربار (نیرو+اجاره+برق) — پیش‌فرض ۳۰٪</div>
-    <input class="fi" id="calc-overhead" type="number" value="30" min="0" max="80" oninput="recalc()">
+    <div class="fi-label">درصد هزینه‌های سربار — پیش‌فرض ۳۰٪</div>
+    <input class="fi" id="calc-overhead" type="number" value="30" oninput="recalc()">
   </div>
-
-  <!-- Ingredient rows -->
   <div class="card">
     <div class="card-title">مواد اولیه</div>
     <div id="calc-ings-list"></div>
     <button class="add-row-btn" onclick="addCalcIng()">+ اضافه کردن ماده اولیه</button>
-    <div style="font-size:11px;color:var(--muted);line-height:1.7;background:var(--s2);border-radius:8px;padding:10px;margin-top:4px">
-      <b style="color:var(--text)">راهنما:</b> مقدار مصرفی = چقدر از این ماده تو یه پرس استفاده می‌کنی (مثلاً ۱۲۰ گرم) · واحد خرید = این ماده رو چند گرم/عدد می‌خری (مثلاً ۱۰۰۰ گرم) · قیمت خرید = کل پول پرداختی برای اون واحد
+    <div style="font-size:11px;color:var(--muted);line-height:1.7;background:var(--s2);border-radius:8px;padding:10px">
+      <b style="color:var(--text)">راهنما:</b> مقدار مصرفی = چقدر مصرف می‌کنی · واحد خرید = چقدر می‌خری · قیمت خرید = کل پول پرداختی
     </div>
   </div>
-
-  <!-- Live Result -->
   <div class="calc-result" id="calc-result" style="display:none">
     <div style="font-size:12px;color:#8888cc;margin-bottom:10px" id="calc-result-name"></div>
     <div class="g2">
-      <div>
-        <div style="font-size:11px;color:#8888cc;margin-bottom:4px">هزینه مواد</div>
-        <div class="calc-big" id="r-materials" style="color:var(--accent)">۰</div>
-        <div style="font-size:10px;color:#666;margin-top:2px">تومان</div>
-      </div>
-      <div>
-        <div style="font-size:11px;color:#8888cc;margin-bottom:4px">Food Cost %</div>
-        <div class="calc-big" id="r-fcp" style="color:var(--green)">—</div>
-        <div style="font-size:10px;color:#666;margin-top:2px">از قیمت فروش</div>
-      </div>
+      <div><div style="font-size:11px;color:#8888cc;margin-bottom:4px">هزینه مواد</div><div class="calc-big" id="r-materials" style="color:var(--accent)">۰</div><div style="font-size:10px;color:#666;margin-top:2px">تومان</div></div>
+      <div><div style="font-size:11px;color:#8888cc;margin-bottom:4px">Food Cost %</div><div class="calc-big" id="r-fcp" style="color:var(--green)">—</div><div style="font-size:10px;color:#666;margin-top:2px">از قیمت فروش</div></div>
     </div>
-
     <div class="fc-bar"><div class="fc-fill" id="r-fcbar" style="width:0%;background:var(--green)"></div></div>
-    <div style="display:flex;justify-content:space-between;font-size:10px;color:#555;margin-bottom:14px">
-      <span>۰٪</span><span style="color:var(--green)">۲۸٪ ✓</span><span style="color:var(--amber)">۳۵٪ ⚠</span><span style="color:var(--red)">۵۰٪+</span>
-    </div>
-
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:#555;margin-bottom:14px"><span>۰٪</span><span style="color:var(--green)">۲۸٪ ✓</span><span style="color:var(--amber)">۳۵٪ ⚠</span><span style="color:var(--red)">۵۰٪+</span></div>
     <div class="g3" style="margin-bottom:10px">
       <div class="metric"><div class="ml">قیمت فروش</div><div class="mv" id="r-sell">—</div></div>
       <div class="metric"><div class="ml">بسته‌بندی</div><div class="mv" id="r-pkg">—</div></div>
-      <div class="metric"><div class="ml">سربار ({{oh}}%)</div><div class="mv" id="r-overhead">—</div></div>
+      <div class="metric"><div class="ml">سربار</div><div class="mv" id="r-overhead">—</div></div>
     </div>
     <div class="g2">
       <div class="metric"><div class="ml">حاشیه ناخالص</div><div class="mv gr" id="r-gross">—</div></div>
@@ -285,126 +272,79 @@ button{cursor:pointer;border:none}
   </div>
 </div>
 
+<!-- INSPIRATION CARDS -->
+<div class="view" id="view-cards">
+  <div class="card" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-color:#6366f130">
+    <div style="font-size:14px;font-weight:700;color:#fff">۱۰۰ غذای خیابانی از ۱۰ فرهنگ</div>
+    <div style="font-size:11px;color:#9999bb;margin-top:5px;line-height:1.7">پرمحبوب‌ترین غذاهای خیابانی دنیا — برای الهام و توسعه ایده. روی هر کدوم بزن، AI سند کامل برای بازار ایران می‌سازه.</div>
+  </div>
+  <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="cards-search" placeholder="جستجوی غذا یا فرهنگ..." oninput="renderCards()"></div>
+  <div id="cards-list"></div>
+</div>
+
 <!-- INGREDIENTS LIBRARY -->
 <div class="view" id="view-ings">
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="ings-search" placeholder="جستجو در مواد اولیه..." oninput="renderIngs()">
-  </div>
+  <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="ings-search" placeholder="جستجو در مواد اولیه..." oninput="renderIngs()"></div>
   <div class="frow" id="ings-cats"></div>
   <div id="ings-grid"></div>
 </div>
 
-<!-- ING DETAIL -->
 <div class="view" id="view-ing-detail">
   <button class="back-btn" onclick="show('ings')">← بازگشت</button>
   <div id="ing-detail-content"></div>
 </div>
 
-<!-- ADD ING -->
 <div class="view" id="view-add-ing">
   <button class="back-btn" onclick="show('ings')">← بازگشت</button>
   <div style="font-size:17px;font-weight:700;margin-bottom:14px" id="add-ing-title">ماده اولیه جدید</div>
-
   <div class="card">
     <div class="card-title">اطلاعات اصلی</div>
-    <div class="fi-label">نام ماده اولیه *</div>
-    <input class="fi" id="ing-name" placeholder="مثلاً: سوسیس گوشت گاو دودی">
+    <div class="fi-label">نام ماده اولیه *</div><input class="fi" id="ing-name" placeholder="مثلاً: سوسیس گوشت گاو دودی">
     <div class="fi-label">دسته‌بندی</div>
-    <select class="fi" id="ing-cat">
-      <option>گوشت و پروتئین</option><option>لبنیات</option><option>نان و آرد</option>
-      <option>سبزیجات</option><option>ادویه و چاشنی</option><option>روغن و چربی</option>
-      <option>خشکبار</option><option>بسته‌بندی</option><option>سایر</option>
-    </select>
-    <div class="fi-label">توضیحات</div>
-    <textarea class="fi" id="ing-desc" rows="2" placeholder="توضیح مختصر..."></textarea>
+    <select class="fi" id="ing-cat"><option>گوشت و پروتئین</option><option>لبنیات</option><option>نان و آرد</option><option>سبزیجات</option><option>ادویه و چاشنی</option><option>روغن و چربی</option><option>خشکبار</option><option>بسته‌بندی</option><option>سایر</option></select>
+    <div class="fi-label">توضیحات</div><textarea class="fi" id="ing-desc" rows="2"></textarea>
   </div>
-
   <div class="card">
     <div class="card-title">قیمت و تأمین</div>
     <div class="fi-row">
-      <div>
-        <div class="fi-label">قیمت خرید (تومان)</div>
-        <input class="fi" id="ing-price" type="number" placeholder="۴۰۰۰۰۰۰">
-      </div>
-      <div>
-        <div class="fi-label">واحد خرید</div>
-        <select class="fi" id="ing-unit">
-          <option>کیلوگرم</option><option>گرم</option><option>لیتر</option>
-          <option>میلی‌لیتر</option><option>عدد</option><option>بسته</option><option>جعبه</option>
-        </select>
-      </div>
+      <div><div class="fi-label">قیمت خرید (تومان)</div><input class="fi" id="ing-price" type="number"></div>
+      <div><div class="fi-label">واحد خرید</div><select class="fi" id="ing-unit"><option>کیلوگرم</option><option>گرم</option><option>لیتر</option><option>میلی‌لیتر</option><option>عدد</option><option>بسته</option><option>جعبه</option></select></div>
     </div>
-    <div class="fi-label">لینک ترب (برای مقایسه قیمت)</div>
-    <input class="fi" id="ing-torob" placeholder="https://torob.com/...">
-    <div class="fi-label">تأمین‌کننده</div>
-    <input class="fi" id="ing-supplier" placeholder="نام تأمین‌کننده">
-    <div class="fi-label">تاریخ ثبت قیمت</div>
-    <input class="fi" id="ing-price-date" placeholder="مثلاً: ۱۴۰۳/۴/۱">
+    <div class="fi-label">لینک ترب</div><input class="fi" id="ing-torob" placeholder="https://torob.com/...">
+    <div class="fi-label">تأمین‌کننده</div><input class="fi" id="ing-supplier">
+    <div class="fi-label">تاریخ ثبت قیمت</div><input class="fi" id="ing-price-date" placeholder="۱۴۰۳/۴/۱">
   </div>
-
   <div class="card">
     <div class="card-title">نگهداری</div>
     <div class="fi-row">
-      <div>
-        <div class="fi-label">دمای نگهداری</div>
-        <select class="fi" id="ing-temp">
-          <option>دمای اتاق</option><option>یخچال (۰-۴°C)</option>
-          <option>فریزر (-۱۸°C)</option><option>خنک (۸-۱۵°C)</option>
-        </select>
-      </div>
-      <div>
-        <div class="fi-label">ماندگاری</div>
-        <input class="fi" id="ing-shelf" placeholder="مثلاً: ۷ روز">
-      </div>
+      <div><div class="fi-label">دما</div><select class="fi" id="ing-temp"><option>دمای اتاق</option><option>یخچال (۰-۴°C)</option><option>فریزر (-۱۸°C)</option><option>خنک (۸-۱۵°C)</option></select></div>
+      <div><div class="fi-label">ماندگاری</div><input class="fi" id="ing-shelf" placeholder="۷ روز"></div>
     </div>
-    <div class="fi-label">شرایط خاص نگهداری</div>
-    <textarea class="fi" id="ing-storage-notes" rows="2" placeholder="مثلاً: دور از نور مستقیم آفتاب، بعد از باز شدن ظرف در بسته نگه دار..."></textarea>
-    <div class="fi-label">ریسک ضایعات</div>
-    <select class="fi" id="ing-waste-risk">
-      <option>پایین</option><option>متوسط</option><option>بالا</option>
-    </select>
+    <div class="fi-label">شرایط خاص</div><textarea class="fi" id="ing-storage-notes" rows="2"></textarea>
+    <div class="fi-label">ریسک ضایعات</div><select class="fi" id="ing-waste-risk"><option>پایین</option><option>متوسط</option><option>بالا</option></select>
   </div>
-
   <div class="card">
     <div class="card-title">اطلاعات تکمیلی</div>
     <div class="fi-row">
-      <div>
-        <div class="fi-label">فصلی؟</div>
-        <select class="fi" id="ing-seasonal">
-          <option value="no">خیر</option><option value="yes">بله</option>
-        </select>
-      </div>
-      <div>
-        <div class="fi-label">وابستگی واردات؟</div>
-        <select class="fi" id="ing-import">
-          <option value="no">خیر</option><option value="yes">بله</option>
-        </select>
-      </div>
+      <div><div class="fi-label">فصلی؟</div><select class="fi" id="ing-seasonal"><option value="no">خیر</option><option value="yes">بله</option></select></div>
+      <div><div class="fi-label">وابستگی واردات؟</div><select class="fi" id="ing-import"><option value="no">خیر</option><option value="yes">بله</option></select></div>
     </div>
-    <div class="fi-label">جایگزین</div>
-    <input class="fi" id="ing-alt" placeholder="ماده جایگزین احتمالی">
-    <div class="fi-label">یادداشت</div>
-    <textarea class="fi" id="ing-notes" rows="2" placeholder="هر چیز دیگه‌ای..."></textarea>
+    <div class="fi-label">جایگزین</div><input class="fi" id="ing-alt">
+    <div class="fi-label">یادداشت</div><textarea class="fi" id="ing-notes" rows="2"></textarea>
   </div>
-
   <button class="btn btn-green" onclick="saveIng()">ذخیره ماده اولیه</button>
   <button class="btn btn-ghost" style="margin-top:8px" onclick="show('ings')">انصراف</button>
 </div>
 
-<!-- COMPARE -->
 <div class="view" id="view-compare">
   <div class="card">
     <div class="card-title">مقایسه آیتم‌ها</div>
-    <div class="fi-label">آیتم اول</div>
-    <select class="fi" id="cmp-a" onchange="renderCompare()"><option value="">انتخاب کن...</option></select>
-    <div class="fi-label">آیتم دوم</div>
-    <select class="fi" id="cmp-b" onchange="renderCompare()"><option value="">انتخاب کن...</option></select>
+    <div class="fi-label">آیتم اول</div><select class="fi" id="cmp-a" onchange="renderCompare()"><option value="">انتخاب کن...</option></select>
+    <div class="fi-label">آیتم دوم</div><select class="fi" id="cmp-b" onchange="renderCompare()"><option value="">انتخاب کن...</option></select>
   </div>
   <div id="compare-result"></div>
 </div>
 
-<!-- SETTINGS -->
 <div class="view" id="view-settings">
   <div class="card">
     <div class="card-title">تنظیمات</div>
@@ -422,186 +362,291 @@ button{cursor:pointer;border:none}
   <div class="card">
     <div style="font-size:13px;font-weight:600;margin-bottom:8px">مدیریت تگ‌ها</div>
     <div id="all-tags-list" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px"></div>
-    <div style="display:flex;gap:6px">
-      <input class="fi" id="new-tag-input" placeholder="تگ جدید..." style="margin:0;flex:1">
-      <button class="btn btn-sm btn-primary" onclick="addGlobalTag()">+</button>
-    </div>
+    <div style="display:flex;gap:6px"><input class="fi" id="new-tag-input" placeholder="تگ جدید..." style="margin:0;flex:1"><button class="btn btn-sm btn-primary" onclick="addGlobalTag()">+</button></div>
   </div>
+  <button class="btn btn-sm" style="background:var(--s2);color:var(--accent);width:100%" onclick="show('compare')">⚖️ مقایسه آیتم‌ها</button>
 </div>
 
-<!-- ══ BOTTOM NAV ══ -->
 <div class="bnav">
-  <button class="bn active" id="bn-list" onclick="show('list')">
-    <span class="bn-icon">📋</span>آرشیو
-  </button>
-  <button class="bn" id="bn-calc" onclick="show('calc')">
-    <span class="bn-icon">🧮</span>Food Cost
-  </button>
-  <button class="bn" id="bn-generate" onclick="show('generate')">
-    <span class="bn-icon">✨</span>AI
-  </button>
-  <button class="bn" id="bn-ings" onclick="show('ings')">
-    <span class="bn-icon">🥩</span>مواد اولیه
-  </button>
-  <button class="bn" id="bn-settings" onclick="show('settings')">
-    <span class="bn-icon">⚙️</span>تنظیمات
-  </button>
+  <button class="bn active" id="bn-dashboard" onclick="show('dashboard')"><span class="bn-icon">🏠</span>خانه</button>
+  <button class="bn" id="bn-list" onclick="show('list')"><span class="bn-icon">📋</span>آرشیو</button>
+  <button class="bn" id="bn-calc" onclick="show('calc')"><span class="bn-icon">🧮</span>Food Cost</button>
+  <button class="bn" id="bn-cards" onclick="show('cards')"><span class="bn-icon">💡</span>ایده‌ها</button>
+  <button class="bn" id="bn-ings" onclick="show('ings')"><span class="bn-icon">🥩</span>مواد</button>
+  <button class="bn" id="bn-settings" onclick="show('settings')"><span class="bn-icon">⚙️</span>تنظیمات</button>
 </div>
 
 <script>
-// ══ SAMPLE DATA ═══════════════════════════════════════════════
 const SAMPLE_DOC = {
   id:1000000001,title:"هات داگ کلاسیک نیویورکی",category:"رسپی",status:"تأیید شده",
-  created_at:"۱۴۰۳/۳/۱",image:null,
-  tags:["غذای خیابانی","آمریکایی","گوشت گاو","فست فود","ناهار"],
-  identity:{concept_statement:"هات داگ خیابانی نیویورک با سوسیس گوشت گاو دودی، خردل زرد، رلیش خیار ترش و پیاز کاراملی در نان نرم بخارپز. سریع، معتبر، شهری.",origin:"نیویورک، آمریکا",tags:["هات داگ","آمریکایی","خیابانی","فست فود"]},
-  recipe:{ingredients:[{name:"سوسیس گوشت گاو دودی",amount:"۱۲۰ گرم"},{name:"نان هات داگ نرم",amount:"۱ عدد (۸۰گرم)"},{name:"خردل زرد",amount:"۱۵ گرم"},{name:"رلیش خیار ترش",amount:"۲۰ گرم"},{name:"پیاز کاراملی",amount:"۳۰ گرم"}],yield:"۱ پرس",prep_time:"۳ دقیقه",cook_time:"۴ دقیقه"},
-  sop:{steps:["سوسیس رو روی گریل ۳ دقیقه گرم کن تا خط گریل ایجاد بشه","نان رو ۴۵ ثانیه بخارپز کن","سوسیس داخل نان قرار بده","خردل به صورت موجی بکش","رلیش و پیاز کاراملی اضافه کن","فوری سرو کن"],service_time_seconds:"240",quality_checkpoints:["سوسیس داغ با رنگ گریل","نان نرم و بخاری","نسبت سس یکسان"]},
-  operations:{equipment:[{name:"گریل فلت‌تاپ",spec:"۶۰×۴۰ سانتی‌متر، ۳kW"},{name:"بخارپز نان",spec:"کانتر تاپ، ۱.۵kW"},{name:"تانک نگه‌داری سوسیس",spec:"۲۴ سوسیس"}],staff_count:"۱ نفر",staff_skill:"کارگر با ۲ ساعت آموزش",space_sqm:"۴"},
-  supply:{key_ingredients:[{ingredient:"سوسیس گوشت گاو دودی",source:"تأمین‌کننده داخلی",seasonal:false},{ingredient:"نان هات داگ",source:"نانوایی قراردادی",seasonal:false}],import_dependency:"رلیش خیار ترش ممکنه وارداتی باشه",alternatives:"سوسیس مرغ به عنوان گزینه سبک‌تر"},
+  created_at:"۱۴۰۳/۳/۱",image:null,tags:["غذای خیابانی","آمریکایی","گوشت گاو","فست فود","ناهار"],
+  identity:{concept_statement:"هات داگ خیابانی نیویورک با سوسیس گوشت گاو دودی، خردل زرد، رلیش خیار ترش و پیاز کاراملی در نان نرم بخارپز.",origin:"نیویورک، آمریکا",tags:["هات داگ","آمریکایی"]},
+  recipe:{ingredients:[{name:"سوسیس گوشت گاو دودی",amount:"۱۲۰ گرم"},{name:"نان هات داگ نرم",amount:"۱ عدد"},{name:"خردل زرد",amount:"۱۵ گرم"},{name:"رلیش خیار ترش",amount:"۲۰ گرم"},{name:"پیاز کاراملی",amount:"۳۰ گرم"}],yield:"۱ پرس",prep_time:"۳ دقیقه",cook_time:"۴ دقیقه"},
+  sop:{steps:["سوسیس رو روی گریل ۳ دقیقه گرم کن","نان رو ۴۵ ثانیه بخارپز کن","سوسیس داخل نان قرار بده","خردل اضافه کن","رلیش و پیاز کاراملی اضافه کن","فوری سرو کن"],service_time_seconds:"240",quality_checkpoints:["سوسیس داغ با رنگ گریل","نان نرم"]},
+  operations:{equipment:[{name:"گریل فلت‌تاپ",spec:"۶۰×۴۰ سانتی‌متر"},{name:"بخارپز نان",spec:"کانتر تاپ"}],staff_count:"۱ نفر",staff_skill:"کارگر پایه",space_sqm:"۴"},
+  supply:{key_ingredients:[{ingredient:"سوسیس گوشت گاو",source:"تأمین‌کننده داخلی",seasonal:false}],import_dependency:"رلیش ممکنه وارداتی باشه",alternatives:"سوسیس مرغ"},
   financials:{food_cost_per_serving:"۸۰,۰۰۰ تومان",packaging_cost:"۸,۰۰۰ تومان",total_cogs:"۸۸,۰۰۰ تومان",suggested_price:"۲۵۰,۰۰۰ تومان",food_cost_percent:"35",gross_margin:"۶۵٪",item_role:"traffic_driver"},
-  market:{target_customer:"جوانان ۱۸-۳۵ ساله شهری",demand_estimate:"بالا — فضای خالی واقعی در تهران",order_rate_estimate:"۴۰-۵۰٪ مشتریان",price_sensitivity:"متوسط"},
-  competition:{similar_in_tehran:["فست فودهای زنجیره‌ای (۸۰-۱۰۰ هزار — کیفیت پایین)"],our_differentiation:"سوسیس گوشت گاو واقعی، نان بخارپز، مواد تازه",market_gap:"هات داگ با کیفیت واقعی در تهران وجود نداره"},
-  risks:{operational_risks:["یکنواختی مقدار سس بین کارکنان"],supply_risks:["نوسان قیمت گوشت گاو"],regulatory_risks:["گواهی بهداشت برای سوسیس الزامیه"],waste_risk:"FIFO الزامی، waste روزانه ~۵-۸٪"},
-  scalability:{multi_branch_ready:"بله — رسپی استاندارد، آموزش ساده",seasonal_version:"بله — نسخه زمستانی و تابستانی",city_adaptation:"حداقل — فقط تأمین‌کننده نان",central_kitchen_compatible:"بله"}
+  market:{target_customer:"جوانان ۱۸-۳۵ شهری",demand_estimate:"بالا",order_rate_estimate:"۴۰-۵۰٪",price_sensitivity:"متوسط"},
+  competition:{similar_in_tehran:["فست فودهای زنجیره‌ای"],our_differentiation:"سوسیس واقعی، نان بخارپز",market_gap:"هات داگ با کیفیت وجود نداره"},
+  risks:{operational_risks:["یکنواختی سس"],supply_risks:["نوسان قیمت گوشت"],regulatory_risks:["گواهی بهداشت لازمه"],waste_risk:"FIFO الزامی"},
+  scalability:{multi_branch_ready:"بله",seasonal_version:"بله",city_adaptation:"حداقل",central_kitchen_compatible:"بله"},
+  price_date:"۱۴۰۳/۳/۱"
 };
-
 const SAMPLE_ING = {
   id:2000000001,name:"سوسیس گوشت گاو دودی",category:"گوشت و پروتئین",
-  desc:"سوسیس با ۸۰٪ گوشت گاو، دودی سرد شده، بدون مواد نگهدارنده مصنوعی",
-  price:4000000,unit:"کیلوگرم",supplier:"تأمین‌کننده مرکزی هلدینگ",
-  torob_link:"",price_date:"۱۴۰۳/۴/۱",
-  temp:"یخچال (۰-۴°C)",shelf_life:"۷ روز",
-  storage_notes:"بعد از باز شدن بسته‌بندی حداکثر ۳ روز. دور از مواد خام نگه‌داری شود.",
-  waste_risk:"متوسط",seasonal:"no",import_dep:"no",
-  alternative:"سوسیس مرغ",notes:"کیفیت تأمین‌کننده هر ماه چک شود",
-  created_at:"۱۴۰۳/۳/۱"
+  desc:"سوسیس با ۸۰٪ گوشت گاو، دودی سرد شده",
+  price:4000000,unit:"کیلوگرم",supplier:"تأمین‌کننده مرکزی",torob_link:"",price_date:"۱۴۰۳/۴/۱",
+  temp:"یخچال (۰-۴°C)",shelf_life:"۷ روز",storage_notes:"بعد از باز شدن حداکثر ۳ روز",
+  waste_risk:"متوسط",seasonal:"no",import_dep:"no",alternative:"سوسیس مرغ",notes:"",created_at:"۱۴۰۳/۳/۱"
 };
 
-// ══ STATE ═════════════════════════════════════════════════════
+// ── STREET FOOD CARDS DATA ──
+// 100 Street Food Inspiration Cards — 10 dishes × 10 cultures
+const STREET_FOOD_CARDS = [
+// ═══ MEXICO ═══
+{id:'sf001',name:'تاکو آل پاستور',culture:'مکزیک',emoji:'🌮',desc:'گوشت خوک ماریناد شده با آناناس و ادویه، روی نان ذرت با پیاز و گشنیز',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','مکزیکی','گوشت','تند']},
+{id:'sf002',name:'الوته (ذرت مکزیکی)',culture:'مکزیک',emoji:'🌽',desc:'بلال کبابی با مایونز، پنیر کوتیخا، پودر چیلی و لیمو',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','مکزیکی','وگان','اسنک']},
+{id:'sf003',name:'کساديا',culture:'مکزیک',emoji:'🫓',desc:'تورتیلا با پنیر ذوب شده و گوشت یا قارچ، سرخ شده روی گریل',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','مکزیکی','پنیری']},
+{id:'sf004',name:'چوریزو تاکو',culture:'مکزیک',emoji:'🌮',desc:'سوسیس چوریزوی تند با پیاز کاراملی و سس سالسا ورده',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','مکزیکی','تند','گوشت']},
+{id:'sf005',name:'تاماله',culture:'مکزیک',emoji:'🫔',desc:'خمیر ذرت پر شده با گوشت یا سبزیجات، بخارپز شده در برگ ذرت',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','مکزیکی','سنتی']},
+{id:'sf006',name:'چورو با شکلات',culture:'مکزیک',emoji:'🍫',desc:'خمیر سرخ شده ترد با شکر دارچین، سرو با سس شکلات داغ',fc_est:'پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','مکزیکی','دسر','شیرین']},
+{id:'sf007',name:'تورتا',culture:'مکزیک',emoji:'🥪',desc:'ساندویچ مکزیکی با گوشت، لوبیا، آووکادو و چیلی روی نان تلیرا',fc_est:'متوسط (۲۸-۳۲٪)',tags:['غذای خیابانی','مکزیکی','ساندویچ']},
+{id:'sf008',name:'کوئسادیا فرایدا',culture:'مکزیک',emoji:'🫓',desc:'تورتیلای سرخ شده پر از پنیر و سبزیجات با سس تند',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','مکزیکی','پنیری']},
+{id:'sf009',name:'آگوآس فرسکاس',culture:'مکزیک',emoji:'🥤',desc:'نوشیدنی میوه‌ای تازه با آب، میوه و کمی شکر — هیبیسکوس یا تمرهندی',fc_est:'بسیار پایین (۱۰-۱۵٪)',tags:['نوشیدنی','مکزیکی','تابستانی']},
+{id:'sf010',name:'اسکیتس (Esquites)',culture:'مکزیک',emoji:'🌽',desc:'ذرت پخته در لیوان با مایونز، پنیر، چیلی و لیمو',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','مکزیکی','وگان']},
+
+// ═══ JAPAN ═══
+{id:'sf011',name:'تاکویاکی',culture:'ژاپن',emoji:'🐙',desc:'توپ‌های خمیری پر از اختاپوس، با سس تاکویاکی، مایونز و بونیتو فلیک',fc_est:'متوسط (۳۰-۳۵٪)',tags:['غذای خیابانی','ژاپنی','دریایی']},
+{id:'sf012',name:'یاکیتوری',culture:'ژاپن',emoji:'🍢',desc:'سیخ مرغ کبابی با سس تری یاکی روی زغال',fc_est:'پایین (۲۲-۲۸٪)',tags:['غذای خیابانی','ژاپنی','گوشت','کبابی']},
+{id:'sf013',name:'اوکونومیاکی',culture:'ژاپن',emoji:'🥞',desc:'پنکیک ژاپنی با کلم، گوشت یا دریایی، سس اوکونومی و بونیتو',fc_est:'متوسط (۲۸-۳۲٪)',tags:['غذای خیابانی','ژاپنی','پنکیک']},
+{id:'sf014',name:'کارآگه',culture:'ژاپن',emoji:'🍗',desc:'مرغ سرخ شده ژاپنی ماریناد شده در سویا و زنجبیل، ترد و آبدار',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','ژاپنی','مرغ','سرخ شده']},
+{id:'sf015',name:'تمپورا',culture:'ژاپن',emoji:'🍤',desc:'میگو یا سبزیجات در خمیر سبک سرخ شده، ترد و سبک',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','ژاپنی','سرخ شده']},
+{id:'sf016',name:'اونیگیری',culture:'ژاپن',emoji:'🍙',desc:'توپ برنج با ماهی یا سبزیجات، پیچیده در نوری',fc_est:'بسیار پایین (۱۸-۲۲٪)',tags:['غذای خیابانی','ژاپنی','برنج']},
+{id:'sf017',name:'یاکیسوبا',culture:'ژاپن',emoji:'🍜',desc:'نودل سرخ شده با سبزیجات و گوشت، سس یاکیسوبا',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','ژاپنی','نودل']},
+{id:'sf018',name:'دوراياکی',culture:'ژاپن',emoji:'🥞',desc:'پنکیک دوبل با خمیر لوبیا قرمز شیرین در وسط',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','ژاپنی','دسر','شیرین']},
+{id:'sf019',name:'تایاکی',culture:'ژاپن',emoji:'🐟',desc:'کیک به شکل ماهی پر از خمیر لوبیا قرمز یا کاسترد',fc_est:'پایین (۱۸-۲۲٪)',tags:['غذای خیابانی','ژاپنی','دسر']},
+{id:'sf020',name:'گیوزا',culture:'ژاپن',emoji:'🥟',desc:'پیراشکی ژاپنی سرخ شده پر از گوشت و سبزیجات',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','ژاپنی','پیراشکی']},
+
+// ═══ SOUTH KOREA ═══
+{id:'sf021',name:'تاکپوکی',culture:'کره جنوبی',emoji:'🌶️',desc:'کیک برنج تند در سس گوچوجانگ شیرین و تند',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','کره‌ای','تند']},
+{id:'sf022',name:'کوگوگی هات داگ',culture:'کره جنوبی',emoji:'🌭',desc:'هات داگ کره‌ای پوشیده در خمیر سیب‌زمینی یا برنج، سرخ شده',fc_est:'متوسط (۲۸-۳۲٪)',tags:['غذای خیابانی','کره‌ای','هات داگ']},
+{id:'sf023',name:'هوتوک',culture:'کره جنوبی',emoji:'🥞',desc:'پنکیک شیرین کره‌ای پر از شکر قهوه‌ای، دارچین و آجیل',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','کره‌ای','شیرین']},
+{id:'sf024',name:'کیمباپ',culture:'کره جنوبی',emoji:'🍙',desc:'رول برنج کره‌ای با سبزیجات و گوشت، پیچیده در جلبک',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','کره‌ای','برنج']},
+{id:'sf025',name:'سوندائه',culture:'کره جنوبی',emoji:'🌭',desc:'سوسیس خونی کره‌ای با نشاسته شیرین و ادویه',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','کره‌ای','سنتی']},
+{id:'sf026',name:'جاجانگمیون استریت',culture:'کره جنوبی',emoji:'🍜',desc:'نودل با سس لوبیا سیاه، نسخه خیابانی سریع',fc_est:'پایین (۲۲-۲۸٪)',tags:['غذای خیابانی','کره‌ای','نودل']},
+{id:'sf027',name:'بانگ‌بانگ چیکن',culture:'کره جنوبی',emoji:'🍗',desc:'مرغ سرخ شده کره‌ای با سس تند-شیرین دوبار سرخ شده',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','کره‌ای','مرغ']},
+{id:'sf028',name:'اودنگ',culture:'کره جنوبی',emoji:'🍢',desc:'کیک ماهی روی سیخ در آب مرغ گرم، غذای خیابانی زمستانی',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','کره‌ای','زمستانی']},
+{id:'sf029',name:'بینگسو',culture:'کره جنوبی',emoji:'🍧',desc:'یخ تراشیده با شیر، میوه و توپینگ‌های شیرین',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','کره‌ای','دسر','تابستانی']},
+{id:'sf030',name:'گامجاتانگ کاپ',culture:'کره جنوبی',emoji:'🥔',desc:'سیب‌زمینی حلزونی سرخ شده روی چوب، اسپایرال و ترد',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','کره‌ای','اسنک']},
+
+// ═══ INDIA ═══
+{id:'sf031',name:'پانی پوری',culture:'هند',emoji:'🫓',desc:'پوسته ترد پر از سیب‌زمینی و آب تند-ترش، خورده یکباره',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','هندی','تند','وگان']},
+{id:'sf032',name:'سموسه',culture:'هند',emoji:'🥟',desc:'خمیر مثلثی سرخ شده پر از سیب‌زمینی و نخود ادویه‌دار',fc_est:'بسیار پایین (۱۸-۲۲٪)',tags:['غذای خیابانی','هندی','وگان']},
+{id:'sf033',name:'وادا پاو',culture:'هند',emoji:'🥔',desc:'کوفته سیب‌زمینی سرخ شده در نان با چاتنی — "برگر هندی"',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','هندی','وگان','ساندویچ']},
+{id:'sf034',name:'پاو بهاجی',culture:'هند',emoji:'🍛',desc:'پوره سبزیجات ادویه‌دار با نان کره‌ای',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','هندی','وگان']},
+{id:'sf035',name:'چاآت',culture:'هند',emoji:'🥗',desc:'میکس ترد سیب‌زمینی، نخود، ماست و چاتنی‌های تند-شیرین',fc_est:'پایین (۱۸-۲۳٪)',tags:['غذای خیابانی','هندی','تند']},
+{id:'sf036',name:'دوسا',culture:'هند',emoji:'🫓',desc:'نان برنجی نازک و ترد، پر از سیب‌زمینی ادویه‌دار',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','هندی','وگان']},
+{id:'sf037',name:'کاتی رول',culture:'هند',emoji:'🌯',desc:'گوشت یا پنیر کبابی پیچیده در نان روتی با سس',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','هندی','رول']},
+{id:'sf038',name:'بوته پوری',culture:'هند',emoji:'🍿',desc:'برنج بادکرده با سبزیجات و چاتنی تند-ترش، اسنک خیابانی',fc_est:'بسیار پایین (۱۰-۱۵٪)',tags:['غذای خیابانی','هندی','وگان']},
+{id:'sf039',name:'جلبی',culture:'هند',emoji:'🍯',desc:'خمیر مارپیچ سرخ شده غوطه‌ور در شربت شکر',fc_est:'پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','هندی','دسر','شیرین']},
+{id:'sf040',name:'لاسی',culture:'هند',emoji:'🥤',desc:'نوشیدنی ماست با میوه یا شکر، سنتی و خنک',fc_est:'بسیار پایین (۱۲-۱۸٪)',tags:['نوشیدنی','هندی','تابستانی']},
+
+// ═══ THAILAND ═══
+{id:'sf041',name:'پادتای',culture:'تایلند',emoji:'🍜',desc:'نودل سرخ شده با تمرهندی، میگو، تخم‌مرغ و بادام زمینی',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','تایلندی','نودل']},
+{id:'sf042',name:'سوم تام',culture:'تایلند',emoji:'🥗',desc:'سالاد پاپایای سبز تند با لیمو، فلفل و بادام زمینی',fc_est:'پایین (۱۸-۲۳٪)',tags:['غذای خیابانی','تایلندی','تند','وگان']},
+{id:'sf043',name:'ساتای',culture:'تایلند',emoji:'🍢',desc:'سیخ گوشت ماریناد شده در شیر نارگیل و کاری، سرو با سس بادام زمینی',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','تایلندی','کبابی']},
+{id:'sf044',name:'مانگو استیکی رایس',culture:'تایلند',emoji:'🥭',desc:'برنج چسبناک شیرین با شیر نارگیل و انبه تازه',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','تایلندی','دسر']},
+{id:'sf045',name:'موپینگ',culture:'تایلند',emoji:'🍖',desc:'گوشت خوک کبابی شیرین روی سیخ، خیابانی محبوب',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','تایلندی','گوشت']},
+{id:'sf046',name:'خاو نیائو ماماونگ',culture:'تایلند',emoji:'🍚',desc:'برنج چسبناک با انبه — همون مانگو استیکی رایس با تنوع سرو',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','تایلندی','دسر']},
+{id:'sf047',name:'تام یام کاپ',culture:'تایلند',emoji:'🍲',desc:'سوپ ترش-تند میگو، نسخه لیوانی برای خیابان',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','تایلندی','تند']},
+{id:'sf048',name:'خاو پاد',culture:'تایلند',emoji:'🍚',desc:'برنج سرخ شده تایلندی با تخم‌مرغ و سبزیجات',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','تایلندی']},
+{id:'sf049',name:'روتی ساوری',culture:'تایلند',emoji:'🥞',desc:'نان نازک سرخ شده با موز و شکلات یا شیر تغلیظ',fc_est:'پایین (۱۸-۲۲٪)',tags:['غذای خیابانی','تایلندی','دسر']},
+{id:'sf050',name:'لارب',culture:'تایلند',emoji:'🥗',desc:'سالاد گوشت چرخ کرده تند با لیمو و نعناع',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','تایلندی','تند']},
+
+// ═══ TURKEY ═══
+{id:'sf051',name:'دونر کباب',culture:'ترکیه',emoji:'🥙',desc:'گوشت لایه‌ای کبابی روی سیخ عمودی، در نان با سبزیجات',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','ترکی','گوشت']},
+{id:'sf052',name:'سیمیت',culture:'ترکیه',emoji:'🥯',desc:'نان حلقه‌ای پوشیده با کنجد، اسنک خیابانی صبحگاهی',fc_est:'بسیار پایین (۱۲-۱۵٪)',tags:['غذای خیابانی','ترکی','نان']},
+{id:'sf053',name:'بالیک اکمک',culture:'ترکیه',emoji:'🐟',desc:'ساندویچ ماهی کبابی استانبولی با پیاز و لیمو',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','ترکی','دریایی']},
+{id:'sf054',name:'لاهماجون',culture:'ترکیه',emoji:'🍕',desc:'پیتزای ترکی نازک با گوشت چرخ کرده و ادویه',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','ترکی','گوشت']},
+{id:'sf055',name:'کوکوره چ',culture:'ترکیه',emoji:'🍢',desc:'روده گوسفند کبابی با ادویه، غذای خیابانی شبانه',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','ترکی','سنتی']},
+{id:'sf056',name:'میدیه دولما',culture:'ترکیه',emoji:'🦪',desc:'صدف پر شده با برنج و ادویه، خورده با لیمو',fc_est:'متوسط (۳۰-۳۵٪)',tags:['غذای خیابانی','ترکی','دریایی']},
+{id:'sf057',name:'گزلمه',culture:'ترکیه',emoji:'🫓',desc:'نان نازک پر از پنیر یا سبزیجات روی ساج',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','ترکی','پنیری']},
+{id:'sf058',name:'کستانه کباب',culture:'ترکیه',emoji:'🌰',desc:'شاه‌بلوط کبابی زمستانی، فروشنده‌های دوره‌گرد خیابانی',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','ترکی','زمستانی']},
+{id:'sf059',name:'بویوزو',culture:'ترکیه',emoji:'🥐',desc:'خمیر لایه‌ای پر از پنیر یا اسفناج',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','ترکی','صبحانه']},
+{id:'sf060',name:'بوزا',culture:'ترکیه',emoji:'🥤',desc:'نوشیدنی تخمیری زمستانی از ارزن، شیرین و ترش',fc_est:'بسیار پایین (۱۲-۱۸٪)',tags:['نوشیدنی','ترکی','زمستانی']},
+
+// ═══ VIETNAM ═══
+{id:'sf061',name:'بانمی',culture:'ویتنام',emoji:'🥖',desc:'ساندویچ فرانسوی-ویتنامی با گوشت، پته، سبزیجات ترشی',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','ویتنامی','ساندویچ']},
+{id:'sf062',name:'فو خیابانی',culture:'ویتنام',emoji:'🍜',desc:'سوپ نودل گوشت با ادویه و سبزیجات تازه، نسخه لیوانی',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','ویتنامی','سوپ']},
+{id:'sf063',name:'گوی کوون',culture:'ویتنام',emoji:'🥢',desc:'رول بهار تازه با میگو، نعناع و ورمیشل برنجی',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','ویتنامی','تازه']},
+{id:'sf064',name:'بانه خوای',culture:'ویتنام',emoji:'🥞',desc:'پنکیک ویتنامی ترد با میگو و جوانه لوبیا',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','ویتنامی','دریایی']},
+{id:'sf065',name:'کافه سوادا',culture:'ویتنام',emoji:'☕',desc:'قهوه یخی ویتنامی با شیر تغلیظ شده شیرین',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['نوشیدنی','ویتنامی','قهوه']},
+{id:'sf066',name:'بانخوآی',culture:'ویتنام',emoji:'🍡',desc:'کیک برنجی چسبناک پر از لوبیا یا گوشت',fc_est:'پایین (۱۸-۲۳٪)',tags:['غذای خیابانی','ویتنامی','برنج']},
+{id:'sf067',name:'بون چا',culture:'ویتنام',emoji:'🍖',desc:'گوشت کبابی با نودل برنجی سرد و سس فیش‌ساس',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','ویتنامی','گوشت']},
+{id:'sf068',name:'چائو',culture:'ویتنام',emoji:'🥣',desc:'عصیده برنج با مرغ یا ماهی، صبحانه خیابانی گرم',fc_est:'پایین (۱۸-۲۳٪)',tags:['غذای خیابانی','ویتنامی','صبحانه']},
+{id:'sf069',name:'چه (Che)',culture:'ویتنام',emoji:'🍮',desc:'دسر شیرین با لوبیا، نارگیل و یخ، چندین نوع',fc_est:'پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','ویتنامی','دسر']},
+{id:'sf070',name:'نم رن',culture:'ویتنام',emoji:'🥟',desc:'رول بهار سرخ شده ترد پر از گوشت و سبزیجات',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','ویتنامی','سرخ شده']},
+
+// ═══ LEBANON ═══
+{id:'sf071',name:'شاورما',culture:'لبنان',emoji:'🌯',desc:'گوشت مرینیت شده کبابی روی سیخ عمودی، در نان لواش با سس طحینه',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','لبنانی','گوشت']},
+{id:'sf072',name:'فلافل',culture:'لبنان',emoji:'🧆',desc:'توپ‌های نخود سرخ شده با ادویه، در نان با تربچه و طحینه',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','لبنانی','وگان']},
+{id:'sf073',name:'مانوشه',culture:'لبنان',emoji:'🍕',desc:'نان تخت لبنانی با زعتر و روغن زیتون یا پنیر',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','لبنانی','صبحانه']},
+{id:'sf074',name:'کبه',culture:'لبنان',emoji:'🥟',desc:'توپ گندم و گوشت سرخ شده، ترد بیرون و آبدار داخل',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','لبنانی','گوشت']},
+{id:'sf075',name:'فتوش',culture:'لبنان',emoji:'🥗',desc:'سالاد لبنانی با نان ترد، سبزیجات تازه و سس نعناع-لیمو',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','لبنانی','وگان']},
+{id:'sf076',name:'حمص خیابانی',culture:'لبنان',emoji:'🫘',desc:'پوره نخود با طحینه، روغن زیتون، در ظرف یکبار مصرف',fc_est:'بسیار پایین (۱۲-۱۸٪)',tags:['غذای خیابانی','لبنانی','وگان']},
+{id:'sf077',name:'سفیحه',culture:'لبنان',emoji:'🥧',desc:'پای کوچک گوشت چرخ کرده با گوجه و ادویه',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','لبنانی','گوشت']},
+{id:'sf078',name:'کنافه',culture:'لبنان',emoji:'🧀',desc:'دسر پنیری شیرین با خمیر کنافه و شربت گلاب',fc_est:'متوسط (۲۵-۳۰٪)',tags:['غذای خیابانی','لبنانی','دسر']},
+{id:'sf079',name:'تبوله',culture:'لبنان',emoji:'🥗',desc:'سالاد جعفری با گندم خرد شده، گوجه و لیمو',fc_est:'بسیار پایین (۱۲-۱۸٪)',tags:['غذای خیابانی','لبنانی','وگان']},
+{id:'sf080',name:'عرق سوس',culture:'لبنان',emoji:'🥤',desc:'نوشیدنی سنتی شیرین‌بیان، خنک و گازدار',fc_est:'بسیار پایین (۱۰-۱۵٪)',tags:['نوشیدنی','لبنانی','سنتی']},
+
+// ═══ USA ═══
+{id:'sf081',name:'هات داگ نیویورکی',culture:'آمریکا',emoji:'🌭',desc:'سوسیس گوشت گاو دودی با خردل، رلیش و پیاز کاراملی',fc_est:'متوسط (۳۰-۳۵٪)',tags:['غذای خیابانی','آمریکایی','گوشت']},
+{id:'sf082',name:'فیلی چیزستیک',culture:'آمریکا',emoji:'🥪',desc:'ساندویچ گوشت گاو ورقه‌ای با پنیر ذوب شده و پیاز',fc_est:'متوسط (۳۲-۳۸٪)',tags:['غذای خیابانی','آمریکایی','ساندویچ']},
+{id:'sf083',name:'فانل کیک',culture:'آمریکا',emoji:'🍩',desc:'خمیر سرخ شده ترد پاشیده با پودر قند، غذای کارناوال',fc_est:'بسیار پایین (۱۲-۱۸٪)',tags:['غذای خیابانی','آمریکایی','دسر']},
+{id:'sf084',name:'لابستر رول',culture:'آمریکا',emoji:'🦞',desc:'ساندویچ خرچنگ دریایی با مایونز در نان بریوش',fc_est:'بالا (۴۰-۴۵٪)',tags:['غذای خیابانی','آمریکایی','دریایی','لوکس']},
+{id:'sf085',name:'کورن داگ',culture:'آمریکا',emoji:'🌭',desc:'سوسیس روی چوب پوشیده در خمیر ذرت سرخ شده',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','آمریکایی','سرخ شده']},
+{id:'sf086',name:'پولد پورک ساندویچ',culture:'آمریکا',emoji:'🥪',desc:'گوشت خوک پخته آرام و کشیده شده با سس باربیکیو',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','آمریکایی','گوشت']},
+{id:'sf087',name:'فود تراک تاکو',culture:'آمریکا',emoji:'🌮',desc:'نسخه آمریکایی-مکزیکی تاکو با ترکیب‌های فیوژن',fc_est:'پایین (۲۲-۲۸٪)',tags:['غذای خیابانی','آمریکایی','فیوژن']},
+{id:'sf088',name:'دیپ‌فرایید اوریو',culture:'آمریکا',emoji:'🍪',desc:'بیسکویت اوریو سرخ شده در خمیر، دسر کارناوالی',fc_est:'پایین (۱۸-۲۳٪)',tags:['غذای خیابانی','آمریکایی','دسر']},
+{id:'sf089',name:'چیلی چیز فرایز',culture:'آمریکا',emoji:'🍟',desc:'سیب‌زمینی سرخ شده با چیلی گوشت و پنیر ذوب',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','آمریکایی','اسنک']},
+{id:'sf090',name:'سافت پرتزل',culture:'آمریکا',emoji:'🥨',desc:'پرتزل نرم با نمک درشت، سرو با خردل',fc_est:'بسیار پایین (۱۲-۱۸٪)',tags:['غذای خیابانی','آمریکایی','نان']},
+
+// ═══ ARGENTINA ═══
+{id:'sf091',name:'چوریپان',culture:'آرژانتین',emoji:'🌭',desc:'سوسیس چوریزو کبابی در نان با چیمیچوری',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','آرژانتینی','گوشت']},
+{id:'sf092',name:'امپانادا',culture:'آرژانتین',emoji:'🥟',desc:'خمیر پر از گوشت یا پنیر، پخته یا سرخ شده',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','آرژانتینی','گوشت']},
+{id:'sf093',name:'میلانسا ساندویچ',culture:'آرژانتین',emoji:'🥪',desc:'گوشت پانه شده سرخ شده در نان با گوجه و پنیر',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','آرژانتینی','گوشت']},
+{id:'sf094',name:'چوری بورگر',culture:'آرژانتین',emoji:'🍔',desc:'برگر آرژانتینی با تخم‌مرغ، ژامبون و پنیر',fc_est:'متوسط (۳۰-۳۵٪)',tags:['غذای خیابانی','آرژانتینی','برگر']},
+{id:'sf095',name:'پاپاس فریتاس کن چیمیچوری',culture:'آرژانتین',emoji:'🍟',desc:'سیب‌زمینی سرخ شده با سس چیمیچوری تازه',fc_est:'بسیار پایین (۱۵-۲۰٪)',tags:['غذای خیابانی','آرژانتینی','وگان']},
+{id:'sf096',name:'آلفاخورس',culture:'آرژانتین',emoji:'🍪',desc:'بیسکویت دولایه پر از کارامل دولچه دلچه',fc_est:'پایین (۱۸-۲۳٪)',tags:['غذای خیابانی','آرژانتینی','دسر']},
+{id:'sf097',name:'بوندیولا',culture:'آرژانتین',emoji:'🥩',desc:'ساندویچ گردن خوک کبابی شده روی گریل خیابانی',fc_est:'متوسط (۲۸-۳۳٪)',tags:['غذای خیابانی','آرژانتینی','گوشت']},
+{id:'sf098',name:'توستادو',culture:'آرژانتین',emoji:'🥪',desc:'ساندویچ تست شده با ژامبون و پنیر',fc_est:'پایین (۲۰-۲۵٪)',tags:['غذای خیابانی','آرژانتینی','ساده']},
+{id:'sf099',name:'گاسئوسا و چوری',culture:'آرژانتین',emoji:'🥤',desc:'نوشابه محلی کنار چوری‌پان — ترکیب کلاسیک خیابانی',fc_est:'بسیار پایین (۱۰-۱۵٪)',tags:['نوشیدنی','آرژانتینی']},
+{id:'sf100',name:'پروبولونه کبابی',culture:'آرژانتین',emoji:'🧀',desc:'پنیر پروبولونه کبابی شده روی گریل با اورگانو',fc_est:'پایین (۲۲-۲۷٪)',tags:['غذای خیابانی','آرژانتینی','پنیری']},
+];
+
+
 let docs = JSON.parse(localStorage.getItem('fb_docs')||'null');
 if(!docs){ docs=[SAMPLE_DOC]; localStorage.setItem('fb_docs',JSON.stringify(docs)); }
 let ings = JSON.parse(localStorage.getItem('fb_ings')||'null');
 if(!ings){ ings=[SAMPLE_ING]; localStorage.setItem('fb_ings',JSON.stringify(ings)); }
 let globalTags = JSON.parse(localStorage.getItem('fb_tags')||'["غذای خیابانی","آمریکایی","ایتالیایی","آسیایی","وگان","صبحانه","ناهار","شام","فست فود","سالم"]');
-let currentView='list', currentDoc=null, currentIng=null;
-let listFilter='همه', listTagFilter='', listSort='new';
-let ingsFilter='همه';
-let editIngId=null;
-let genImgB64=null;
-let calcIngs=[];
+let currentDoc=null, currentIng=null;
+let listFilter='همه', listTagFilter='', listSort='new', ingsFilter='همه';
+let editIngId=null, genImgB64=null, calcIngs=[];
+let openCultures={};
 
 const CATS=['همه','رسپی','منو','مدل سرویس','تجهیزات','ایده فضا'];
 const ING_CATS=['همه','گوشت و پروتئین','لبنیات','نان و آرد','سبزیجات','ادویه و چاشنی','روغن و چربی','خشکبار','بسته‌بندی','سایر'];
 const SM={'ایده':{c:'#6366f1',bg:'#6366f118'},'در بررسی':{c:'#f59e0b',bg:'#f59e0b18'},'تأیید شده':{c:'#10b981',bg:'#10b98118'},'رد شده':{c:'#ef4444',bg:'#ef444418'}};
 const TEMP_ICONS={'دمای اتاق':'🌡️','یخچال (۰-۴°C)':'❄️','فریزر (-۱۸°C)':'🧊','خنک (۸-۱۵°C)':'🌬️'};
 const WASTE_COLORS={'پایین':SM['تأیید شده'],'متوسط':SM['در بررسی'],'بالا':SM['رد شده']};
+const CULTURE_FLAGS={'مکزیک':'🇲🇽','ژاپن':'🇯🇵','کره جنوبی':'🇰🇷','هند':'🇮🇳','تایلند':'🇹🇭','ترکیه':'🇹🇷','ویتنام':'🇻🇳','لبنان':'🇱🇧','آمریکا':'🇺🇸','آرژانتین':'🇦🇷'};
 
-// ══ STORAGE ═══════════════════════════════════════════════════
 function saveDocs(){ localStorage.setItem('fb_docs',JSON.stringify(docs)); updateMeta(); }
 function saveIngs(){ localStorage.setItem('fb_ings',JSON.stringify(ings)); updateMeta(); }
 function saveTags(){ localStorage.setItem('fb_tags',JSON.stringify(globalTags)); }
 function getKey(){ return localStorage.getItem('fb_api_key')||''; }
-function saveKey(){
-  const k=document.getElementById('api-key-input').value.trim();
-  if(!k) return;
-  localStorage.setItem('fb_api_key',k);
-  document.getElementById('api-key-input').value='';
-  updateKeyStatus(); alert('کلید ذخیره شد ✓');
-}
-function updateKeyStatus(){
-  const el=document.getElementById('key-status');
-  if(!el) return;
-  if(getKey()){ el.className='key-ok'; el.textContent='کلید ذخیره شده ✓'; }
-  else { el.className='key-miss'; el.textContent='کلید وارد نشده'; }
-}
+function saveKey(){ const k=document.getElementById('api-key-input').value.trim(); if(!k) return; localStorage.setItem('fb_api_key',k); document.getElementById('api-key-input').value=''; updateKeyStatus(); alert('کلید ذخیره شد ✓'); }
+function updateKeyStatus(){ const el=document.getElementById('key-status'); if(!el) return; if(getKey()){ el.className='key-ok'; el.textContent='کلید ذخیره شده ✓'; } else { el.className='key-miss'; el.textContent='کلید وارد نشده'; } }
 function updateMeta(){
-  document.getElementById('st-docs').textContent=docs.length;
-  document.getElementById('st-ings').textContent=ings.length;
-  document.getElementById('st-ok').textContent=docs.filter(d=>d.status==='تأیید شده').length;
+  const a=document.getElementById('st-docs'); if(a) a.textContent=docs.length;
+  const b=document.getElementById('st-ings'); if(b) b.textContent=ings.length;
+  const c=document.getElementById('st-ok'); if(c) c.textContent=docs.filter(d=>d.status==='تأیید شده').length;
 }
 function n(v){ return parseInt((v||'0').toString().replace(/[^0-9]/g,''))||0; }
 function fmt(v){ return v?v.toLocaleString('fa-IR'):'—'; }
 
-// ══ VIEWS ═════════════════════════════════════════════════════
 function show(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.getElementById('view-'+name).classList.add('on');
   document.querySelectorAll('.bn').forEach(b=>b.classList.remove('active'));
-  const bnMap={list:'bn-list',calc:'bn-calc',generate:'bn-generate',ings:'bn-ings',settings:'bn-settings'};
+  const bnMap={dashboard:'bn-dashboard',list:'bn-list',calc:'bn-calc',cards:'bn-cards',ings:'bn-ings',settings:'bn-settings'};
   if(bnMap[name]) document.getElementById(bnMap[name]).classList.add('active');
-
-  const titles={list:'آرشیو',calc:'ماشین حساب Food Cost',generate:'ثبت ایده با AI',ings:'مواد اولیه',settings:'تنظیمات',detail:'سند',compare:'مقایسه','ing-detail':'ماده اولیه','add-ing':'ثبت ماده اولیه'};
+  const titles={dashboard:'آرشیو F&B',list:'آرشیو',calc:'ماشین حساب Food Cost',generate:'ثبت ایده با AI',cards:'۱۰۰ ایده الهام',ings:'مواد اولیه',settings:'تنظیمات',detail:'سند',compare:'مقایسه','ing-detail':'ماده اولیه','add-ing':'ثبت ماده اولیه'};
   document.getElementById('tb-title').textContent=titles[name]||'';
 
-  if(name==='list'){ renderList(); document.getElementById('tb-sub').textContent='هلدینگ آینه · '+docs.length+' سند'; }
+  if(name==='dashboard'){ renderDashboard(); document.getElementById('tb-sub').textContent='هلدینگ آینه'; }
+  else if(name==='list'){ renderList(); document.getElementById('tb-sub').textContent=docs.length+' سند'; }
+  else if(name==='cards'){ renderCards(); document.getElementById('tb-sub').textContent='۱۰۰ غذا از ۱۰ فرهنگ'; }
   else if(name==='ings'){ renderIngs(); document.getElementById('tb-sub').textContent=ings.length+' ماده اولیه'; }
   else if(name==='calc'){ initCalc(); document.getElementById('tb-sub').textContent='محاسبه لحظه‌ای'; }
   else if(name==='compare'){ initCompare(); document.getElementById('tb-sub').textContent=''; }
   else if(name==='settings'){ updateKeyStatus(); updateMeta(); renderTagsSettings(); document.getElementById('tb-sub').textContent=''; }
-  else if(name==='add-ing'){ document.getElementById('tb-sub').textContent=''; }
   else { document.getElementById('tb-sub').textContent=''; }
-
-  currentView=name;
   window.scrollTo(0,0);
 }
 
-// ══ LIST ══════════════════════════════════════════════════════
-function setSort(s){
-  listSort=s;
-  ['new','fc','margin'].forEach(x=>document.getElementById('sort-'+x).classList.remove('active'));
-  document.getElementById('sort-'+s).classList.add('active');
-  renderList();
+// ══ DASHBOARD ═════════════════════════════════════════════════
+function renderDashboard(){
+  document.getElementById('dash-total-docs').textContent=docs.length;
+  document.getElementById('dash-approved').textContent=docs.filter(d=>d.status==='تأیید شده').length;
+  document.getElementById('dash-review').textContent=docs.filter(d=>d.status==='در بررسی').length;
+
+  const fcVals=docs.map(d=>parseFloat(d.financials?.food_cost_percent)).filter(v=>v&&!isNaN(v));
+  const avgFc=fcVals.length?(fcVals.reduce((a,b)=>a+b,0)/fcVals.length).toFixed(1):null;
+  const fcEl=document.getElementById('dash-avg-fc');
+  fcEl.textContent=avgFc?avgFc+'٪':'—';
+  fcEl.className='dash-stat-val '+(avgFc>35?'rd':avgFc>28?'am':'gr');
+
+  // Alerts: stale prices (no price_date or old format check is simplified)
+  const alerts=[];
+  const staleIngs=ings.filter(i=>!i.price_date);
+  if(staleIngs.length) alerts.push(`📅 ${staleIngs.length} ماده اولیه بدون تاریخ ثبت قیمت — بهتره آپدیت بشن`);
+  const highFcDocs=docs.filter(d=>parseFloat(d.financials?.food_cost_percent)>35);
+  if(highFcDocs.length) alerts.push(`🔴 ${highFcDocs.length} سند با Food Cost بالای ۳۵٪ — نیاز به بازنگری قیمت‌گذاری`);
+  const importDepIngs=ings.filter(i=>i.import_dep==='yes');
+  if(importDepIngs.length) alerts.push(`🌍 ${importDepIngs.length} ماده اولیه وابسته به واردات — ریسک نوسان قیمت`);
+  const noTagDocs=docs.filter(d=>!d.tags||d.tags.length===0);
+  if(noTagDocs.length) alerts.push(`🏷️ ${noTagDocs.length} سند بدون تگ — برای فیلتر بهتر تگ اضافه کن`);
+
+  const alertsCard=document.getElementById('dash-alerts-card');
+  if(alerts.length){
+    alertsCard.style.display='block';
+    document.getElementById('dash-alerts').innerHTML=alerts.map(a=>`<div class="alert-card"><span class="alert-icon">${a.split(' ')[0]}</span><span class="alert-text">${a.substring(a.indexOf(' ')+1)}</span></div>`).join('');
+  } else { alertsCard.style.display='none'; }
+
+  // Recent docs
+  const recent=[...docs].sort((a,b)=>b.id-a.id).slice(0,3);
+  document.getElementById('dash-recent').innerHTML = recent.length ? recent.map(d=>{
+    const st=SM[d.status]||SM['ایده'];
+    return `<div class="divrow" style="cursor:pointer" onclick="openDoc(${d.id})"><span class="dl">${d.title}</span><span class="badge" style="background:${st.bg};color:${st.c}">${d.status}</span></div>`;
+  }).join('') : '<div style="font-size:12px;color:var(--dim)">هنوز سندی ثبت نشده</div>';
+
+  // Expensive ingredients
+  const expensive=[...ings].sort((a,b)=>b.price-a.price).slice(0,3);
+  document.getElementById('dash-expensive-ings').innerHTML = expensive.length ? expensive.map(i=>
+    `<div class="divrow" style="cursor:pointer" onclick="openIng(${i.id})"><span class="dl">${i.name}</span><span class="dv ac" style="font-weight:600">${fmt(i.price)} ت/${i.unit}</span></div>`
+  ).join('') : '<div style="font-size:12px;color:var(--dim)">ماده‌ای ثبت نشده</div>';
 }
+
+// ══ LIST ══════════════════════════════════════════════════════
+function setSort(s){ listSort=s; ['new','fc','margin'].forEach(x=>document.getElementById('sort-'+x).classList.remove('active')); document.getElementById('sort-'+s).classList.add('active'); renderList(); }
 function renderList(){
-  // Category filters
   document.getElementById('list-cats').innerHTML=CATS.map(c=>`<button class="fbtn ${c===listFilter?'active':''}" onclick="listFilter='${c}';renderList()">${c}</button>`).join('');
-  // Tag filters
   const allUsedTags=[...new Set(docs.flatMap(d=>d.tags||[]))];
   document.getElementById('list-tags').innerHTML=['همه',...allUsedTags].map(t=>`<button class="fbtn ${t===listTagFilter||(!listTagFilter&&t==='همه')?'active':''}" onclick="listTagFilter='${t==='همه'?'':t}';renderList()">#${t}</button>`).join('');
-
   const q=document.getElementById('list-search').value.trim();
   let filtered=docs.filter(d=>{
     const catOk=listFilter==='همه'||d.category===listFilter;
     const tagOk=!listTagFilter||(d.tags||[]).includes(listTagFilter);
-    const srOk=!q||(d.title||'').includes(q)||(d.tags||[]).some(t=>t.includes(q))||(d.identity?.concept_statement||'').includes(q);
+    const srOk=!q||(d.title||'').includes(q)||(d.tags||[]).some(t=>t.includes(q));
     return catOk&&tagOk&&srOk;
   });
-
-  // Sort
   if(listSort==='fc') filtered.sort((a,b)=>parseFloat(a.financials?.food_cost_percent||99)-parseFloat(b.financials?.food_cost_percent||99));
   else if(listSort==='margin') filtered.sort((a,b)=>n(b.financials?.gross_margin)-n(a.financials?.gross_margin));
   else filtered.sort((a,b)=>b.id-a.id);
-
   const grid=document.getElementById('doc-grid');
   if(!filtered.length){ grid.innerHTML=`<div class="empty"><div class="empty-icon">📂</div>سندی پیدا نشد</div>`; return; }
-
   grid.innerHTML=filtered.map(doc=>{
     const st=SM[doc.status]||SM['ایده'];
     const fcp=parseFloat(doc.financials?.food_cost_percent||0);
     const fcColor=fcp>35?'var(--red)':fcp>28?'var(--amber)':'var(--green)';
     const tags=(doc.tags||[]).slice(0,3).map(t=>`<span class="tag-pill" style="font-size:10px;padding:2px 7px">#${t}</span>`).join('');
     const thumb=doc.image?`<img class="dc-thumb" src="${doc.image}" alt="">`:'';
-    return `<div class="dc" onclick="openDoc(${doc.id})">
-      ${thumb}
-      <div class="dc-top">
-        <div class="dc-title">${doc.title||'—'}</div>
-        <span class="badge" style="background:${st.bg};color:${st.c}">${doc.status}</span>
-      </div>
-      <div class="dc-cat">${doc.category||''}</div>
-      <div class="dc-desc">${doc.identity?.concept_statement||''}</div>
-      <div class="dc-bottom">
-        <div style="display:flex;gap:5px;flex-wrap:wrap">${tags}</div>
-        ${fcp?`<span class="fc-chip" style="background:${fcColor}22;color:${fcColor}">FC ${fcp}٪</span>`:''}
-      </div>
-    </div>`;
+    return `<div class="dc" onclick="openDoc(${doc.id})">${thumb}<div class="dc-top"><div class="dc-title">${doc.title||'—'}</div><span class="badge" style="background:${st.bg};color:${st.c}">${doc.status}</span></div><div class="dc-cat">${doc.category||''}</div><div class="dc-desc">${doc.identity?.concept_statement||''}</div><div class="dc-bottom"><div style="display:flex;gap:5px;flex-wrap:wrap">${tags}</div>${fcp?`<span class="fc-chip" style="background:${fcColor}22;color:${fcColor}">FC ${fcp}٪</span>`:''}</div></div>`;
   }).join('');
 }
-
-function openDoc(id){
-  const doc=docs.find(d=>d.id===id); if(!doc) return;
-  currentDoc=doc; renderDetail(doc); show('detail');
-}
+function openDoc(id){ const doc=docs.find(d=>d.id===id); if(!doc) return; currentDoc=doc; renderDetail(doc); show('detail'); }
 
 // ══ DETAIL ════════════════════════════════════════════════════
 function renderDetail(doc){
@@ -611,201 +656,63 @@ function renderDetail(doc){
   const statusBtns=Object.keys(SM).map(s=>`<button class="btn btn-sm" onclick="setDocStatus(${doc.id},'${s}')" style="background:${doc.status===s?SM[s].c:'var(--s2)'};color:${doc.status===s?'#fff':'var(--muted)'}">${s}</button>`).join('');
   const tags=(doc.tags||[]).map(t=>`<span class="tag-pill">#${t}</span>`).join('');
   const imgHtml=doc.image?`<img class="doc-img" src="${doc.image}" alt="">`:'';
-  const ings=(doc.recipe?.ingredients||[]).map(i=>`<div class="divrow"><span class="dl">${i.name}</span><span class="dv">${i.amount}</span></div>`).join('');
+  const ingsHtml=(doc.recipe?.ingredients||[]).map(i=>`<div class="divrow"><span class="dl">${i.name}</span><span class="dv">${i.amount}</span></div>`).join('');
   const steps=(doc.sop?.steps||[]).map((s,i)=>`<div class="step"><span class="snum">${i+1}</span><span class="stxt">${s}</span></div>`).join('');
   const eqs=(doc.operations?.equipment||[]).map(e=>`<div style="background:var(--s2);border-radius:8px;padding:9px 11px;margin-bottom:7px"><div style="font-size:12px;color:#ddd">${e.name}</div><div style="font-size:10px;color:var(--muted);margin-top:2px">${e.spec||''}</div></div>`).join('');
   const comps=(doc.competition?.similar_in_tehran||[]).map(c=>`<div class="bullet"><span class="bd" style="color:var(--accent)">·</span><span class="bt">${c}</span></div>`).join('');
   const opR=(doc.risks?.operational_risks||[]).map(r=>`<div class="bullet"><span class="bd" style="color:var(--red)">·</span><span class="bt">${r}</span></div>`).join('');
   const roleIsProfit=doc.financials?.item_role==='profit_center';
-
-  // Tags from global
-  const tagPickers=globalTags.map(t=>{
-    const has=(doc.tags||[]).includes(t);
-    return `<span class="tag-pill ${has?'active':''}" onclick="toggleDocTag(${doc.id},'${t}')" style="cursor:pointer">#${t}</span>`;
-  }).join('');
+  const tagPickers=globalTags.map(t=>{ const has=(doc.tags||[]).includes(t); return `<span class="tag-pill ${has?'active':''}" onclick="toggleDocTag(${doc.id},'${t}')" style="cursor:pointer">#${t}</span>`; }).join('');
 
   document.getElementById('detail-content').innerHTML=`
-    <div class="card">
-      ${imgHtml}
-      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:4px">${doc.title||'—'}</div>
-      <div style="font-size:11px;color:var(--accent)">${doc.category||''} · ${doc.created_at||''}</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">${statusBtns}</div>
-      <div style="font-size:13px;color:#aaa;line-height:1.8;margin-top:12px">${doc.identity?.concept_statement||''}</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:5px">منشأ: ${doc.identity?.origin||'—'}</div>
-      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:10px">${tags}</div>
+    <div class="card">${imgHtml}<div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:4px">${doc.title||'—'}</div><div style="font-size:11px;color:var(--accent)">${doc.category||''} · ${doc.created_at||''}</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">${statusBtns}</div><div style="font-size:13px;color:#aaa;line-height:1.8;margin-top:12px">${doc.identity?.concept_statement||''}</div><div style="font-size:11px;color:var(--muted);margin-top:5px">منشأ: ${doc.identity?.origin||'—'}</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:10px">${tags}</div>
       <div style="margin-top:12px;display:flex;gap:7px;flex-wrap:wrap">
         <button class="btn btn-sm" style="background:var(--s2);color:var(--text)" onclick="startEditDoc(${doc.id})">✏️ ویرایش</button>
         <button class="btn btn-sm" style="background:var(--s2);color:var(--accent)" onclick="loadToCalc(${doc.id})">🧮 Food Cost</button>
         <button class="btn btn-sm btn-danger" onclick="deleteDoc(${doc.id})">حذف</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">تگ‌ها <span class="card-sub">· برای دسته‌بندی</span></div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">${tagPickers}</div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۱. رسپی استاندارد</div>
-      <div class="slabel" style="margin-top:0">مواد اولیه</div>${ings}
-      <div class="g3" style="margin-top:12px">
-        <div class="metric"><div class="ml">خروجی</div><div class="mv" style="font-size:13px">${doc.recipe?.yield||'—'}</div></div>
-        <div class="metric"><div class="ml">آماده‌سازی</div><div class="mv" style="font-size:13px">${doc.recipe?.prep_time||'—'}</div></div>
-        <div class="metric"><div class="ml">پخت</div><div class="mv" style="font-size:13px">${doc.recipe?.cook_time||'—'}</div></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۲. روش اجرا (SOP)</div>
-      ${steps}
-      <div class="g2" style="margin-top:10px">
-        <div class="metric"><div class="ml">زمان سرویس</div><div class="mv ac">${doc.sop?.service_time_seconds||'—'} ث</div></div>
-        <div><div class="slabel" style="margin-top:0">کنترل کیفیت</div>${(doc.sop?.quality_checkpoints||[]).map(q=>`<div class="bullet"><span class="bd" style="color:var(--accent)">·</span><span class="bt">${q}</span></div>`).join('')}</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۳. نیازهای عملیاتی</div>
-      ${eqs}
-      <div class="g3">
-        <div class="metric"><div class="ml">نیرو</div><div class="mv" style="font-size:12px">${doc.operations?.staff_count||'—'}</div></div>
-        <div class="metric"><div class="ml">مهارت</div><div class="mv" style="font-size:12px">${doc.operations?.staff_skill||'—'}</div></div>
-        <div class="metric"><div class="ml">فضا</div><div class="mv" style="font-size:12px">${doc.operations?.space_sqm||'—'} م²</div></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۴. بهای تمام‌شده</div>
-      <div class="g2">
-        <div class="metric"><div class="ml">هزینه مواد/پرس</div><div class="mv ac" style="font-size:13px">${doc.financials?.food_cost_per_serving||'—'}</div></div>
-        <div class="metric"><div class="ml">قیمت فروش</div><div class="mv" style="font-size:13px">${doc.financials?.suggested_price||'—'}</div></div>
-      </div>
-      <div class="g3">
-        <div class="metric"><div class="ml">Food Cost %</div><div class="mv" style="font-size:16px;color:${fcColor}">${fcp||'—'}٪</div></div>
-        <div class="metric"><div class="ml">حاشیه سود</div><div class="mv gr" style="font-size:13px">${doc.financials?.gross_margin||'—'}</div></div>
-        <div class="metric"><div class="ml">نقش</div><div class="mv" style="font-size:11px;color:${roleIsProfit?'var(--green)':'var(--accent)'}">${roleIsProfit?'Profit Center':'Traffic Driver'}</div></div>
-      </div>
-      <div class="fc-bar"><div class="fc-fill" style="width:${Math.min(fcp,100)}%;background:${fcColor}"></div></div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۵. بازار و مشتری</div>
-      <div class="divrow"><span class="dl">مشتری هدف</span><span class="dv">${doc.market?.target_customer||'—'}</span></div>
-      <div class="divrow"><span class="dl">تخمین تقاضا</span><span class="dv">${doc.market?.demand_estimate||'—'}</span></div>
-      <div class="divrow"><span class="dl">نرخ سفارش</span><span class="dv">${doc.market?.order_rate_estimate||'—'}</span></div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۶. رقبا</div>
-      ${comps}
-      <div class="g2" style="margin-top:10px">
-        <div><div class="slabel" style="margin-top:0">تمایز ما</div><p style="font-size:12px;color:#aaa;line-height:1.7">${doc.competition?.our_differentiation||'—'}</p></div>
-        <div><div class="slabel" style="margin-top:0">فضای خالی</div><p style="font-size:12px;color:#aaa;line-height:1.7">${doc.competition?.market_gap||'—'}</p></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۷. ریسک‌ها</div>
-      <div class="g2">
-        <div><div class="slabel" style="margin-top:0">عملیاتی</div>${opR}</div>
-        <div><div class="slabel" style="margin-top:0">تأمین</div>${(doc.risks?.supply_risks||[]).map(r=>`<div class="bullet"><span class="bd" style="color:var(--red)">·</span><span class="bt">${r}</span></div>`).join('')}</div>
-      </div>
-      <div style="margin-top:10px"><div class="slabel" style="margin-top:0">ضایعات</div><p style="font-size:12px;color:#aaa">${doc.risks?.waste_risk||'—'}</p></div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">۸. توسعه‌پذیری</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
-        ${[['چند شعبه',doc.scalability?.multi_branch_ready],['نسخه فصلی',doc.scalability?.seasonal_version],['تطبیق شهرها',doc.scalability?.city_adaptation],['آشپزخانه مرکزی',doc.scalability?.central_kitchen_compatible]].map(([l,v])=>`<div style="background:var(--s2);border-radius:8px;padding:9px 11px"><div style="font-size:10px;color:var(--muted);margin-bottom:3px">${l}</div><div style="font-size:12px;color:#ccc;line-height:1.5">${v||'—'}</div></div>`).join('')}
-      </div>
-    </div>`;
+      </div></div>
+    <div class="card"><div class="card-title">تگ‌ها</div><div style="display:flex;gap:6px;flex-wrap:wrap">${tagPickers}</div></div>
+    <div class="card"><div class="card-title">۱. رسپی استاندارد</div><div class="slabel" style="margin-top:0">مواد اولیه</div>${ingsHtml}<div class="g3" style="margin-top:12px"><div class="metric"><div class="ml">خروجی</div><div class="mv" style="font-size:13px">${doc.recipe?.yield||'—'}</div></div><div class="metric"><div class="ml">آماده‌سازی</div><div class="mv" style="font-size:13px">${doc.recipe?.prep_time||'—'}</div></div><div class="metric"><div class="ml">پخت</div><div class="mv" style="font-size:13px">${doc.recipe?.cook_time||'—'}</div></div></div></div>
+    <div class="card"><div class="card-title">۲. روش اجرا (SOP)</div>${steps}<div class="g2" style="margin-top:10px"><div class="metric"><div class="ml">زمان سرویس</div><div class="mv ac">${doc.sop?.service_time_seconds||'—'} ث</div></div><div><div class="slabel" style="margin-top:0">کنترل کیفیت</div>${(doc.sop?.quality_checkpoints||[]).map(q=>`<div class="bullet"><span class="bd" style="color:var(--accent)">·</span><span class="bt">${q}</span></div>`).join('')}</div></div></div>
+    <div class="card"><div class="card-title">۳. نیازهای عملیاتی</div>${eqs}<div class="g3"><div class="metric"><div class="ml">نیرو</div><div class="mv" style="font-size:12px">${doc.operations?.staff_count||'—'}</div></div><div class="metric"><div class="ml">مهارت</div><div class="mv" style="font-size:12px">${doc.operations?.staff_skill||'—'}</div></div><div class="metric"><div class="ml">فضا</div><div class="mv" style="font-size:12px">${doc.operations?.space_sqm||'—'} م²</div></div></div></div>
+    <div class="card"><div class="card-title">۴. بهای تمام‌شده</div><div class="g2"><div class="metric"><div class="ml">هزینه مواد/پرس</div><div class="mv ac" style="font-size:13px">${doc.financials?.food_cost_per_serving||'—'}</div></div><div class="metric"><div class="ml">قیمت فروش</div><div class="mv" style="font-size:13px">${doc.financials?.suggested_price||'—'}</div></div></div><div class="g3"><div class="metric"><div class="ml">Food Cost %</div><div class="mv" style="font-size:16px;color:${fcColor}">${fcp||'—'}٪</div></div><div class="metric"><div class="ml">حاشیه سود</div><div class="mv gr" style="font-size:13px">${doc.financials?.gross_margin||'—'}</div></div><div class="metric"><div class="ml">نقش</div><div class="mv" style="font-size:11px;color:${roleIsProfit?'var(--green)':'var(--accent)'}">${roleIsProfit?'Profit Center':'Traffic Driver'}</div></div></div><div class="fc-bar"><div class="fc-fill" style="width:${Math.min(fcp,100)}%;background:${fcColor}"></div></div></div>
+    <div class="card"><div class="card-title">۵. بازار و مشتری</div><div class="divrow"><span class="dl">مشتری هدف</span><span class="dv">${doc.market?.target_customer||'—'}</span></div><div class="divrow"><span class="dl">تخمین تقاضا</span><span class="dv">${doc.market?.demand_estimate||'—'}</span></div><div class="divrow"><span class="dl">نرخ سفارش</span><span class="dv">${doc.market?.order_rate_estimate||'—'}</span></div></div>
+    <div class="card"><div class="card-title">۶. رقبا</div>${comps}<div class="g2" style="margin-top:10px"><div><div class="slabel" style="margin-top:0">تمایز ما</div><p style="font-size:12px;color:#aaa;line-height:1.7">${doc.competition?.our_differentiation||'—'}</p></div><div><div class="slabel" style="margin-top:0">فضای خالی</div><p style="font-size:12px;color:#aaa;line-height:1.7">${doc.competition?.market_gap||'—'}</p></div></div></div>
+    <div class="card"><div class="card-title">۷. ریسک‌ها</div><div class="g2"><div><div class="slabel" style="margin-top:0">عملیاتی</div>${opR}</div><div><div class="slabel" style="margin-top:0">تأمین</div>${(doc.risks?.supply_risks||[]).map(r=>`<div class="bullet"><span class="bd" style="color:var(--red)">·</span><span class="bt">${r}</span></div>`).join('')}</div></div><div style="margin-top:10px"><div class="slabel" style="margin-top:0">ضایعات</div><p style="font-size:12px;color:#aaa">${doc.risks?.waste_risk||'—'}</p></div></div>
+    <div class="card"><div class="card-title">۸. توسعه‌پذیری</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">${[['چند شعبه',doc.scalability?.multi_branch_ready],['نسخه فصلی',doc.scalability?.seasonal_version],['تطبیق شهرها',doc.scalability?.city_adaptation],['آشپزخانه مرکزی',doc.scalability?.central_kitchen_compatible]].map(([l,v])=>`<div style="background:var(--s2);border-radius:8px;padding:9px 11px"><div style="font-size:10px;color:var(--muted);margin-bottom:3px">${l}</div><div style="font-size:12px;color:#ccc;line-height:1.5">${v||'—'}</div></div>`).join('')}</div></div>`;
 }
-
-function setDocStatus(id,status){
-  docs=docs.map(d=>d.id===id?{...d,status}:d); saveDocs();
-  const doc=docs.find(d=>d.id===id); if(doc){currentDoc=doc;renderDetail(doc);}
-}
-function toggleDocTag(id,tag){
-  docs=docs.map(d=>{
-    if(d.id!==id) return d;
-    const tags=d.tags||[];
-    return {...d,tags:tags.includes(tag)?tags.filter(t=>t!==tag):[...tags,tag]};
-  }); saveDocs();
-  const doc=docs.find(d=>d.id===id); if(doc){currentDoc=doc;renderDetail(doc);}
-}
-function deleteDoc(id){
-  if(!confirm('حذف بشه؟')) return;
-  docs=docs.filter(d=>d.id!==id); saveDocs(); show('list');
-}
+function setDocStatus(id,status){ docs=docs.map(d=>d.id===id?{...d,status}:d); saveDocs(); const doc=docs.find(d=>d.id===id); if(doc){currentDoc=doc;renderDetail(doc);} }
+function toggleDocTag(id,tag){ docs=docs.map(d=>{ if(d.id!==id) return d; const tags=d.tags||[]; return {...d,tags:tags.includes(tag)?tags.filter(t=>t!==tag):[...tags,tag]}; }); saveDocs(); const doc=docs.find(d=>d.id===id); if(doc){currentDoc=doc;renderDetail(doc);} }
+function deleteDoc(id){ if(!confirm('حذف بشه؟')) return; docs=docs.filter(d=>d.id!==id); saveDocs(); show('list'); }
 function startEditDoc(id){
-  // Simple edit modal via inline replacement
   const doc=docs.find(d=>d.id===id); if(!doc) return;
-  document.getElementById('detail-content').innerHTML+=`
-    <div class="card" id="edit-card">
-      <div class="card-title">ویرایش سریع</div>
-      <div class="fi-label">نام</div><input class="fi" id="e-title" value="${doc.title||''}">
-      <div class="fi-label">توضیح</div><textarea class="fi" id="e-concept" rows="3">${doc.identity?.concept_statement||''}</textarea>
-      <div class="fi-label">منشأ</div><input class="fi" id="e-origin" value="${doc.identity?.origin||''}">
-      <div class="fi-label">قیمت فروش</div><input class="fi" id="e-price" value="${doc.financials?.suggested_price||''}">
-      <div class="fi-label">Food Cost %</div><input class="fi" id="e-fcp" value="${doc.financials?.food_cost_percent||''}">
-      <div class="fi-label">حاشیه سود</div><input class="fi" id="e-margin" value="${doc.financials?.gross_margin||''}">
-      <button class="btn btn-green" onclick="saveEditDoc(${id})">ذخیره</button>
-      <button class="btn btn-ghost" style="margin-top:6px" onclick="renderDetail(currentDoc)">انصراف</button>
-    </div>`;
+  document.getElementById('detail-content').innerHTML+=`<div class="card" id="edit-card"><div class="card-title">ویرایش سریع</div><div class="fi-label">نام</div><input class="fi" id="e-title" value="${doc.title||''}"><div class="fi-label">توضیح</div><textarea class="fi" id="e-concept" rows="3">${doc.identity?.concept_statement||''}</textarea><div class="fi-label">منشأ</div><input class="fi" id="e-origin" value="${doc.identity?.origin||''}"><div class="fi-label">قیمت فروش</div><input class="fi" id="e-price" value="${doc.financials?.suggested_price||''}"><div class="fi-label">Food Cost %</div><input class="fi" id="e-fcp" value="${doc.financials?.food_cost_percent||''}"><div class="fi-label">حاشیه سود</div><input class="fi" id="e-margin" value="${doc.financials?.gross_margin||''}"><button class="btn btn-green" onclick="saveEditDoc(${id})">ذخیره</button><button class="btn btn-ghost" style="margin-top:6px" onclick="renderDetail(currentDoc)">انصراف</button></div>`;
   document.getElementById('edit-card').scrollIntoView({behavior:'smooth'});
 }
 function saveEditDoc(id){
-  docs=docs.map(d=>{
-    if(d.id!==id) return d;
-    return {...d,
-      title:document.getElementById('e-title').value,
-      identity:{...d.identity,concept_statement:document.getElementById('e-concept').value,origin:document.getElementById('e-origin').value},
-      financials:{...d.financials,suggested_price:document.getElementById('e-price').value,food_cost_percent:document.getElementById('e-fcp').value,gross_margin:document.getElementById('e-margin').value}
-    };
-  }); saveDocs();
-  currentDoc=docs.find(d=>d.id===id); renderDetail(currentDoc);
+  docs=docs.map(d=>{ if(d.id!==id) return d; return {...d,title:document.getElementById('e-title').value,identity:{...d.identity,concept_statement:document.getElementById('e-concept').value,origin:document.getElementById('e-origin').value},financials:{...d.financials,suggested_price:document.getElementById('e-price').value,food_cost_percent:document.getElementById('e-fcp').value,gross_margin:document.getElementById('e-margin').value}}; });
+  saveDocs(); currentDoc=docs.find(d=>d.id===id); renderDetail(currentDoc);
 }
 
 // ══ FOOD COST CALCULATOR ══════════════════════════════════════
-function initCalc(){
-  if(calcIngs.length===0) addCalcIng();
-  recalc();
-}
-function addCalcIng(){
-  const id='ci_'+Date.now();
-  calcIngs.push({id,name:'',buyQty:1000,buyPrice:0,useQty:0});
-  renderCalcIngs();
-}
+function initCalc(){ if(calcIngs.length===0) addCalcIng(); recalc(); }
+function addCalcIng(){ calcIngs.push({id:'ci_'+Date.now()+Math.random(),name:'',buyQty:1000,buyPrice:0,useQty:0}); renderCalcIngs(); }
 function removeCalcIng(id){ calcIngs=calcIngs.filter(c=>c.id!==id); renderCalcIngs(); recalc(); }
 function renderCalcIngs(){
-  // Build select options from ings library
   const ingOpts=ings.map(i=>`<option value="${i.id}">${i.name} (${fmt(i.price)} / ${i.unit})</option>`).join('');
-
   document.getElementById('calc-ings-list').innerHTML=calcIngs.map(ci=>`
-    <div class="ing-calc-row" style="flex-direction:column;gap:8px">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <select style="background:var(--s1);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;flex:1;margin-left:8px" onchange="calcIngSelect('${ci.id}',this.value)" id="sel-${ci.id}">
-          <option value="">انتخاب از کتابخانه یا وارد کردن دستی...</option>
-          ${ingOpts}
-        </select>
-        <button class="rm-btn dyn-field" onclick="removeCalcIng('${ci.id}')" style="padding:7px 10px;font-size:12px;border-radius:7px;background:var(--s2);color:var(--red);border:1px solid var(--border)">×</button>
+    <div style="background:var(--s2);border-radius:9px;padding:10px 12px;margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <select style="background:var(--s1);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;flex:1;margin-left:8px" onchange="calcIngSelect('${ci.id}',this.value)"><option value="">از کتابخانه یا دستی...</option>${ingOpts}</select>
+        <button onclick="removeCalcIng('${ci.id}')" style="padding:7px 10px;font-size:12px;border-radius:7px;background:var(--s1);color:var(--red);border:1px solid var(--border)">×</button>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-        <div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:3px">مقدار مصرفی</div>
-          <input class="calc-input" id="uq-${ci.id}" type="number" placeholder="مثلاً ۱۲۰" value="${ci.useQty||''}" oninput="updateCalcIng('${ci.id}','useQty',this.value);recalc()">
-        </div>
-        <div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:3px">واحد خرید (گرم/عدد)</div>
-          <input class="calc-input" id="bq-${ci.id}" type="number" placeholder="مثلاً ۱۰۰۰" value="${ci.buyQty||''}" oninput="updateCalcIng('${ci.id}','buyQty',this.value);recalc()">
-        </div>
-        <div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:3px">قیمت خرید (تومان)</div>
-          <input class="calc-input" id="bp-${ci.id}" type="number" placeholder="مثلاً ۴۰۰۰۰۰۰" value="${ci.buyPrice||''}" oninput="updateCalcIng('${ci.id}','buyPrice',this.value);recalc()">
-        </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:6px">
+        <div><div style="font-size:10px;color:var(--muted);margin-bottom:3px">مقدار مصرفی</div><input class="calc-input" type="number" placeholder="۱۲۰" value="${ci.useQty||''}" oninput="updateCalcIng('${ci.id}','useQty',this.value);recalc()"></div>
+        <div><div style="font-size:10px;color:var(--muted);margin-bottom:3px">واحد خرید</div><input class="calc-input" type="number" placeholder="۱۰۰۰" value="${ci.buyQty||''}" oninput="updateCalcIng('${ci.id}','buyQty',this.value);recalc()"></div>
+        <div><div style="font-size:10px;color:var(--muted);margin-bottom:3px">قیمت خرید</div><input class="calc-input" type="number" placeholder="۴۰۰۰۰۰۰" value="${ci.buyPrice||''}" oninput="updateCalcIng('${ci.id}','buyPrice',this.value);recalc()"></div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <input class="calc-input" id="nm-${ci.id}" placeholder="نام ماده" value="${ci.name||''}" oninput="updateCalcIng('${ci.id}','name',this.value)" style="flex:1;margin-left:8px">
+        <input class="calc-input" placeholder="نام ماده" value="${ci.name||''}" oninput="updateCalcIng('${ci.id}','name',this.value)" style="flex:1;margin-left:8px">
         <span style="font-size:12px;color:var(--accent);font-weight:600;white-space:nowrap" id="cost-${ci.id}">${calcIngCost(ci)?fmt(Math.round(calcIngCost(ci)))+' ت':''}</span>
       </div>
     </div>`).join('');
@@ -815,17 +722,12 @@ function calcIngSelect(id,val){
   const ing=ings.find(i=>i.id==val); if(!ing) return;
   const ci=calcIngs.find(c=>c.id===id); if(!ci) return;
   ci.name=ing.name; ci.buyPrice=ing.price;
-  // Convert unit to grams for buyQty
   const unitMap={'کیلوگرم':1000,'گرم':1,'لیتر':1000,'میلی‌لیتر':1,'عدد':1,'بسته':1,'جعبه':1};
   ci.buyQty=unitMap[ing.unit]||1;
-  document.getElementById('nm-'+id).value=ci.name;
-  document.getElementById('bp-'+id).value=ci.buyPrice;
-  document.getElementById('bq-'+id).value=ci.buyQty;
-  recalc();
+  renderCalcIngs(); recalc();
 }
 function updateCalcIng(id,field,val){ const ci=calcIngs.find(c=>c.id===id); if(ci) ci[field]=field==='name'?val:parseFloat(val)||0; }
 function calcIngCost(ci){ if(!ci.buyQty||!ci.buyPrice||!ci.useQty) return 0; return (ci.useQty/ci.buyQty)*ci.buyPrice; }
-
 function recalc(){
   const sell=parseFloat(document.getElementById('calc-sell')?.value)||0;
   const pkg=parseFloat(document.getElementById('calc-pkg')?.value)||0;
@@ -836,24 +738,14 @@ function recalc(){
   const grossMargin=sell-totalCogs;
   const overheadAmt=sell*(oh/100);
   const netProfit=sell-totalCogs-overheadAmt;
-
-  // Update individual costs
-  calcIngs.forEach(ci=>{
-    const el=document.getElementById('cost-'+ci.id);
-    if(el){ const c=calcIngCost(ci); el.textContent=c>0?fmt(Math.round(c))+' ت':''; }
-  });
-
+  calcIngs.forEach(ci=>{ const el=document.getElementById('cost-'+ci.id); if(el){ const c=calcIngCost(ci); el.textContent=c>0?fmt(Math.round(c))+' ت':''; } });
   const res=document.getElementById('calc-result');
   if(!sell){ res.style.display='none'; return; }
   res.style.display='block';
-
   const fcColor=fcp>35?'var(--red)':fcp>28?'var(--amber)':'var(--green)';
-  document.getElementById('r-materials').textContent=fmt(Math.round(matTotal));
-  document.getElementById('r-materials').style.color=fcColor;
-  document.getElementById('r-fcp').textContent=fcp.toFixed(1)+'٪';
-  document.getElementById('r-fcp').style.color=fcColor;
-  document.getElementById('r-fcbar').style.width=Math.min(fcp,100)+'%';
-  document.getElementById('r-fcbar').style.background=fcColor;
+  document.getElementById('r-materials').textContent=fmt(Math.round(matTotal)); document.getElementById('r-materials').style.color=fcColor;
+  document.getElementById('r-fcp').textContent=fcp.toFixed(1)+'٪'; document.getElementById('r-fcp').style.color=fcColor;
+  document.getElementById('r-fcbar').style.width=Math.min(fcp,100)+'%'; document.getElementById('r-fcbar').style.background=fcColor;
   document.getElementById('r-sell').textContent=fmt(sell)+' ت';
   document.getElementById('r-pkg').textContent=fmt(pkg)+' ت';
   document.getElementById('r-overhead').textContent=fmt(Math.round(overheadAmt))+' ت';
@@ -861,35 +753,24 @@ function recalc(){
   document.getElementById('r-net').textContent=fmt(Math.round(netProfit))+' ت';
   document.getElementById('r-net').className='mv '+(netProfit>0?'gr':'rd');
   document.getElementById('calc-result-name').textContent=document.getElementById('calc-name').value||'محصول';
-
-  // Breakdown
   const breakdown=calcIngs.filter(ci=>calcIngCost(ci)>0).sort((a,b)=>calcIngCost(b)-calcIngCost(a));
   document.getElementById('r-ing-breakdown').innerHTML=breakdown.map(ci=>{
     const cost=calcIngCost(ci); const pct=matTotal>0?(cost/matTotal*100).toFixed(0):0;
-    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #ffffff08">
-      <span style="font-size:11px;color:#bbb">${ci.name||'ماده'}</span>
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:60px;height:4px;background:var(--s3);border-radius:2px;overflow:hidden"><div style="width:${pct}%;height:100%;background:var(--accent)"></div></div>
-        <span style="font-size:11px;color:var(--accent);font-weight:600">${fmt(Math.round(cost))} ت</span>
-        <span style="font-size:10px;color:var(--muted)">${pct}٪</span>
-      </div>
-    </div>`;
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #ffffff08"><span style="font-size:11px;color:#bbb">${ci.name||'ماده'}</span><div style="display:flex;align-items:center;gap:8px"><div style="width:60px;height:4px;background:var(--s3);border-radius:2px;overflow:hidden"><div style="width:${pct}%;height:100%;background:var(--accent)"></div></div><span style="font-size:11px;color:var(--accent);font-weight:600">${fmt(Math.round(cost))} ت</span><span style="font-size:10px;color:var(--muted)">${pct}٪</span></div></div>`;
   }).join('');
 }
-
 function loadToCalc(id){
   const doc=docs.find(d=>d.id===id); if(!doc) return;
   calcIngs=[];
   (doc.recipe?.ingredients||[]).forEach(ing=>{
     const matchIng=ings.find(i=>i.name.includes(ing.name.split(' ')[0]));
-    calcIngs.push({id:'ci_'+Date.now()+Math.random(),name:ing.name,buyQty:matchIng?1000:1000,buyPrice:matchIng?matchIng.price:0,useQty:parseInt(ing.amount)||0});
+    calcIngs.push({id:'ci_'+Date.now()+Math.random(),name:ing.name,buyQty:1000,buyPrice:matchIng?matchIng.price:0,useQty:parseInt(ing.amount)||0});
   });
   document.getElementById('calc-name').value=doc.title;
   document.getElementById('calc-sell').value=n(doc.financials?.suggested_price);
   document.getElementById('calc-pkg').value=n(doc.financials?.packaging_cost);
   show('calc');
 }
-
 function saveCalcAsDoc(){
   const sell=parseFloat(document.getElementById('calc-sell').value)||0;
   const pkg=parseFloat(document.getElementById('calc-pkg').value)||0;
@@ -897,156 +778,117 @@ function saveCalcAsDoc(){
   const matTotal=calcIngs.reduce((s,ci)=>s+calcIngCost(ci),0);
   const fcp=sell>0?((matTotal+pkg)/sell*100).toFixed(1):0;
   const gross=sell-(matTotal+pkg);
-  const net=sell-(matTotal+pkg)-(sell*oh/100);
   const name=document.getElementById('calc-name').value||'محصول جدید';
-  const doc={
-    id:Date.now(),title:name,category:'رسپی',status:'ایده',
-    created_at:new Date().toLocaleDateString('fa-IR'),image:null,tags:[],
+  const doc={id:Date.now(),title:name,category:'رسپی',status:'ایده',created_at:new Date().toLocaleDateString('fa-IR'),image:null,tags:[],
     identity:{concept_statement:'ساخته شده از ماشین حساب Food Cost',origin:'',tags:[]},
     recipe:{ingredients:calcIngs.map(ci=>({name:ci.name,amount:ci.useQty+'g'})),yield:'۱ پرس',prep_time:'',cook_time:''},
-    sop:{steps:[],service_time_seconds:'',quality_checkpoints:[]},
-    operations:{equipment:[],staff_count:'',staff_skill:'',space_sqm:''},
+    sop:{steps:[],service_time_seconds:'',quality_checkpoints:[]},operations:{equipment:[],staff_count:'',staff_skill:'',space_sqm:''},
     supply:{key_ingredients:[],import_dependency:'',alternatives:''},
     financials:{food_cost_per_serving:fmt(Math.round(matTotal))+' ت',packaging_cost:fmt(pkg)+' ت',total_cogs:fmt(Math.round(matTotal+pkg))+' ت',suggested_price:fmt(sell)+' ت',food_cost_percent:fcp,gross_margin:fmt(Math.round(gross))+' ت',item_role:'traffic_driver'},
-    market:{target_customer:'',demand_estimate:'',order_rate_estimate:'',price_sensitivity:''},
-    competition:{similar_in_tehran:[],our_differentiation:'',market_gap:''},
-    risks:{operational_risks:[],supply_risks:[],regulatory_risks:[],waste_risk:''},
-    scalability:{multi_branch_ready:'',seasonal_version:'',city_adaptation:'',central_kitchen_compatible:''}
-  };
-  docs.unshift(doc); saveDocs();
-  currentDoc=doc; renderDetail(doc); show('detail');
+    market:{target_customer:'',demand_estimate:'',order_rate_estimate:'',price_sensitivity:''},competition:{similar_in_tehran:[],our_differentiation:'',market_gap:''},
+    risks:{operational_risks:[],supply_risks:[],regulatory_risks:[],waste_risk:''},scalability:{multi_branch_ready:'',seasonal_version:'',city_adaptation:'',central_kitchen_compatible:''}};
+  docs.unshift(doc); saveDocs(); currentDoc=doc; renderDetail(doc); show('detail');
+}
+
+// ══ INSPIRATION CARDS ═════════════════════════════════════════
+function renderCards(){
+  const q=document.getElementById('cards-search').value.trim();
+  const cultures=[...new Set(STREET_FOOD_CARDS.map(c=>c.culture))];
+  let html='';
+  cultures.forEach(culture=>{
+    const items=STREET_FOOD_CARDS.filter(c=>c.culture===culture && (!q || c.name.includes(q) || c.culture.includes(q) || c.desc.includes(q)));
+    if(!items.length) return;
+    const isOpen=openCultures[culture]||q;
+    html+=`<div class="culture-section">
+      <div class="culture-header" onclick="toggleCulture('${culture}')">
+        <span class="culture-flag">${CULTURE_FLAGS[culture]||'🌍'}</span>
+        <span>${culture}</span>
+        <span class="culture-count">${items.length} غذا</span>
+        <span class="culture-chevron" style="transform:rotate(${isOpen?90:0}deg)">‹</span>
+      </div>
+      <div class="culture-body ${isOpen?'open':''}" id="culture-${culture}">
+        ${items.map(item=>`
+          <div class="insp-card">
+            <div class="insp-top">
+              <span class="insp-emoji">${item.emoji}</span>
+              <div style="flex:1">
+                <div class="insp-name">${item.name}</div>
+                <div class="insp-culture">${item.culture} · Food Cost تخمینی: ${item.fc_est}</div>
+              </div>
+            </div>
+            <div class="insp-desc">${item.desc}</div>
+            <div class="insp-tags">${item.tags.map(t=>`<span class="tag-pill" style="font-size:10px">#${t}</span>`).join('')}</div>
+            <button class="btn btn-sm btn-primary" style="margin-top:10px;width:100%" onclick="generateFromCard('${item.id}')">✨ ساخت سند کامل با AI</button>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  });
+  document.getElementById('cards-list').innerHTML=html || `<div class="empty"><div class="empty-icon">🔍</div>چیزی پیدا نشد</div>`;
+}
+function toggleCulture(c){ openCultures[c]=!openCultures[c]; renderCards(); }
+async function generateFromCard(cardId){
+  const card=STREET_FOOD_CARDS.find(c=>c.id===cardId); if(!card) return;
+  const key=getKey();
+  if(!key){ alert('ابتدا API Key رو در تنظیمات وارد کن'); show('settings'); return; }
+  const prompt=`غذای خیابانی "${card.name}" از فرهنگ ${card.culture}: ${card.desc}. این غذا رو برای بازار تهران/ایران بومی‌سازی کن و سند کامل بساز.`;
+  document.getElementById('gen-text').value=prompt;
+  show('generate');
+  setTimeout(()=>generateDoc(),300);
 }
 
 // ══ INGREDIENTS LIBRARY ═══════════════════════════════════════
 function renderIngs(){
   document.getElementById('ings-cats').innerHTML=ING_CATS.map(c=>`<button class="fbtn ${c===ingsFilter?'active':''}" onclick="ingsFilter='${c}';renderIngs()">${c}</button>`).join('');
   const q=document.getElementById('ings-search').value.trim();
-  let filtered=ings.filter(i=>{
-    const catOk=ingsFilter==='همه'||i.category===ingsFilter;
-    const srOk=!q||(i.name||'').includes(q);
-    return catOk&&srOk;
-  }).sort((a,b)=>b.id-a.id);
-
+  let filtered=ings.filter(i=>{ const catOk=ingsFilter==='همه'||i.category===ingsFilter; const srOk=!q||(i.name||'').includes(q); return catOk&&srOk; }).sort((a,b)=>b.id-a.id);
   const grid=document.getElementById('ings-grid');
-  // Add button
   let html=`<button class="btn btn-green" onclick="openAddIng()" style="margin-bottom:12px">+ ماده اولیه جدید</button>`;
   if(!filtered.length){ html+=`<div class="empty"><div class="empty-icon">🥩</div>ماده‌ای پیدا نشد</div>`; grid.innerHTML=html; return; }
-
   html+=filtered.map(ing=>{
-    const wc=WASTE_COLORS[ing.waste_risk]||WASTE_COLORS['متوسط'];
-    const ti=TEMP_ICONS[ing.temp]||'🌡️';
-    return `<div class="ing-card" onclick="openIng(${ing.id})">
-      <div class="ing-card-top">
-        <div>
-          <div class="ing-name">${ing.name}</div>
-          <div class="ing-meta">${ing.category} · ${ti} ${ing.temp}</div>
-        </div>
-        <span class="ing-cat-badge">${ing.seasonal==='yes'?'🌱 فصلی':''}</span>
-      </div>
-      <div class="ing-price">${fmt(ing.price)} <span class="ing-price-unit">تومان / ${ing.unit}</span></div>
-      <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted)">
-        <span>ماندگاری: ${ing.shelf_life||'—'}</span>
-        <span class="badge" style="background:${wc.bg};color:${wc.c}">ضایعات: ${ing.waste_risk}</span>
-      </div>
-    </div>`;
+    const wc=WASTE_COLORS[ing.waste_risk]||WASTE_COLORS['متوسط']; const ti=TEMP_ICONS[ing.temp]||'🌡️';
+    return `<div class="ing-card" onclick="openIng(${ing.id})"><div class="ing-card-top"><div><div class="ing-name">${ing.name}</div><div class="ing-meta">${ing.category} · ${ti} ${ing.temp}</div></div><span class="ing-cat-badge">${ing.seasonal==='yes'?'🌱 فصلی':''}</span></div><div class="ing-price">${fmt(ing.price)} <span class="ing-price-unit">تومان / ${ing.unit}</span></div><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted)"><span>ماندگاری: ${ing.shelf_life||'—'}</span><span class="badge" style="background:${wc.bg};color:${wc.c}">ضایعات: ${ing.waste_risk}</span></div></div>`;
   }).join('');
   grid.innerHTML=html;
 }
-
-function openIng(id){
-  const ing=ings.find(i=>i.id===id); if(!ing) return;
-  currentIng=ing; renderIngDetail(ing); show('ing-detail');
-}
+function openIng(id){ const ing=ings.find(i=>i.id===id); if(!ing) return; currentIng=ing; renderIngDetail(ing); show('ing-detail'); }
 function renderIngDetail(ing){
-  const wc=WASTE_COLORS[ing.waste_risk]||WASTE_COLORS['متوسط'];
-  const ti=TEMP_ICONS[ing.temp]||'🌡️';
+  const wc=WASTE_COLORS[ing.waste_risk]||WASTE_COLORS['متوسط']; const ti=TEMP_ICONS[ing.temp]||'🌡️';
   document.getElementById('ing-detail-content').innerHTML=`
-    <div class="card">
-      <div style="font-size:20px;font-weight:700;color:#fff">${ing.name}</div>
-      <div style="font-size:11px;color:var(--accent);margin-top:4px">${ing.category}</div>
-      <div style="font-size:13px;color:#aaa;line-height:1.7;margin-top:10px">${ing.desc||''}</div>
-      <div style="display:flex;gap:7px;margin-top:12px;flex-wrap:wrap">
-        <button class="btn btn-sm" style="background:var(--s2);color:var(--text)" onclick="openEditIng(${ing.id})">✏️ ویرایش</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteIng(${ing.id})">حذف</button>
-        ${ing.torob_link?`<a href="${ing.torob_link}" target="_blank" class="btn btn-sm" style="background:var(--s2);color:var(--accent);text-decoration:none">🔗 ترب</a>`:''}
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">قیمت و تأمین</div>
-      <div class="ing-price" style="font-size:22px">${fmt(ing.price)} <span class="ing-price-unit">تومان / ${ing.unit}</span></div>
-      <div style="font-size:10px;color:var(--muted);margin-top:4px">آخرین بروزرسانی: ${ing.price_date||'—'}</div>
-      <div class="divrow" style="margin-top:10px"><span class="dl">تأمین‌کننده</span><span class="dv">${ing.supplier||'—'}</span></div>
-      <div class="divrow"><span class="dl">وابستگی واردات</span><span class="dv">${ing.import_dep==='yes'?'✅ بله':'❌ خیر'}</span></div>
-      <div class="divrow"><span class="dl">جایگزین</span><span class="dv">${ing.alternative||'—'}</span></div>
-    </div>
-    <div class="card">
-      <div class="card-title">نگهداری</div>
-      <div class="g2">
-        <div class="metric"><div class="ml">دما</div><div class="mv" style="font-size:13px">${ti} ${ing.temp}</div></div>
-        <div class="metric"><div class="ml">ماندگاری</div><div class="mv" style="font-size:13px">${ing.shelf_life||'—'}</div></div>
-      </div>
-      <div class="divrow"><span class="dl">ریسک ضایعات</span><span class="badge" style="background:${wc.bg};color:${wc.c}">${ing.waste_risk}</span></div>
-      <div style="margin-top:10px;background:var(--s2);border-radius:9px;padding:12px;font-size:12px;color:#aaa;line-height:1.7">${ing.storage_notes||'شرایط خاصی ثبت نشده'}</div>
-    </div>
+    <div class="card"><div style="font-size:20px;font-weight:700;color:#fff">${ing.name}</div><div style="font-size:11px;color:var(--accent);margin-top:4px">${ing.category}</div><div style="font-size:13px;color:#aaa;line-height:1.7;margin-top:10px">${ing.desc||''}</div><div style="display:flex;gap:7px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-sm" style="background:var(--s2);color:var(--text)" onclick="openEditIng(${ing.id})">✏️ ویرایش</button><button class="btn btn-sm btn-danger" onclick="deleteIng(${ing.id})">حذف</button>${ing.torob_link?`<a href="${ing.torob_link}" target="_blank" class="btn btn-sm" style="background:var(--s2);color:var(--accent);text-decoration:none">🔗 ترب</a>`:''}</div></div>
+    <div class="card"><div class="card-title">قیمت و تأمین</div><div class="ing-price" style="font-size:22px">${fmt(ing.price)} <span class="ing-price-unit">تومان / ${ing.unit}</span></div><div style="font-size:10px;color:var(--muted);margin-top:4px">آخرین بروزرسانی: ${ing.price_date||'—'}</div><div class="divrow" style="margin-top:10px"><span class="dl">تأمین‌کننده</span><span class="dv">${ing.supplier||'—'}</span></div><div class="divrow"><span class="dl">وابستگی واردات</span><span class="dv">${ing.import_dep==='yes'?'✅ بله':'❌ خیر'}</span></div><div class="divrow"><span class="dl">جایگزین</span><span class="dv">${ing.alternative||'—'}</span></div></div>
+    <div class="card"><div class="card-title">نگهداری</div><div class="g2"><div class="metric"><div class="ml">دما</div><div class="mv" style="font-size:13px">${ti} ${ing.temp}</div></div><div class="metric"><div class="ml">ماندگاری</div><div class="mv" style="font-size:13px">${ing.shelf_life||'—'}</div></div></div><div class="divrow"><span class="dl">ریسک ضایعات</span><span class="badge" style="background:${wc.bg};color:${wc.c}">${ing.waste_risk}</span></div><div style="margin-top:10px;background:var(--s2);border-radius:9px;padding:12px;font-size:12px;color:#aaa;line-height:1.7">${ing.storage_notes||'شرایط خاصی ثبت نشده'}</div></div>
     ${ing.notes?`<div class="card"><div class="card-title">یادداشت</div><p style="font-size:12px;color:#aaa;line-height:1.7">${ing.notes}</p></div>`:''}`;
 }
-
 function openAddIng(){ editIngId=null; clearIngForm(); document.getElementById('add-ing-title').textContent='ماده اولیه جدید'; show('add-ing'); }
 function openEditIng(id){
-  const ing=ings.find(i=>i.id===id); if(!ing) return;
-  editIngId=id;
+  const ing=ings.find(i=>i.id===id); if(!ing) return; editIngId=id;
   document.getElementById('add-ing-title').textContent='ویرایش ماده اولیه';
-  document.getElementById('ing-name').value=ing.name||'';
-  document.getElementById('ing-cat').value=ing.category||'';
-  document.getElementById('ing-desc').value=ing.desc||'';
-  document.getElementById('ing-price').value=ing.price||'';
-  document.getElementById('ing-unit').value=ing.unit||'کیلوگرم';
-  document.getElementById('ing-torob').value=ing.torob_link||'';
-  document.getElementById('ing-supplier').value=ing.supplier||'';
-  document.getElementById('ing-price-date').value=ing.price_date||'';
-  document.getElementById('ing-temp').value=ing.temp||'دمای اتاق';
-  document.getElementById('ing-shelf').value=ing.shelf_life||'';
-  document.getElementById('ing-storage-notes').value=ing.storage_notes||'';
-  document.getElementById('ing-waste-risk').value=ing.waste_risk||'متوسط';
-  document.getElementById('ing-seasonal').value=ing.seasonal||'no';
-  document.getElementById('ing-import').value=ing.import_dep||'no';
-  document.getElementById('ing-alt').value=ing.alternative||'';
-  document.getElementById('ing-notes').value=ing.notes||'';
+  document.getElementById('ing-name').value=ing.name||''; document.getElementById('ing-cat').value=ing.category||'';
+  document.getElementById('ing-desc').value=ing.desc||''; document.getElementById('ing-price').value=ing.price||'';
+  document.getElementById('ing-unit').value=ing.unit||'کیلوگرم'; document.getElementById('ing-torob').value=ing.torob_link||'';
+  document.getElementById('ing-supplier').value=ing.supplier||''; document.getElementById('ing-price-date').value=ing.price_date||'';
+  document.getElementById('ing-temp').value=ing.temp||'دمای اتاق'; document.getElementById('ing-shelf').value=ing.shelf_life||'';
+  document.getElementById('ing-storage-notes').value=ing.storage_notes||''; document.getElementById('ing-waste-risk').value=ing.waste_risk||'متوسط';
+  document.getElementById('ing-seasonal').value=ing.seasonal||'no'; document.getElementById('ing-import').value=ing.import_dep||'no';
+  document.getElementById('ing-alt').value=ing.alternative||''; document.getElementById('ing-notes').value=ing.notes||'';
   show('add-ing');
 }
-function clearIngForm(){
-  ['ing-name','ing-desc','ing-price','ing-torob','ing-supplier','ing-price-date','ing-shelf','ing-storage-notes','ing-alt','ing-notes'].forEach(id=>document.getElementById(id).value='');
-}
+function clearIngForm(){ ['ing-name','ing-desc','ing-price','ing-torob','ing-supplier','ing-price-date','ing-shelf','ing-storage-notes','ing-alt','ing-notes'].forEach(id=>document.getElementById(id).value=''); }
 function saveIng(){
   const name=document.getElementById('ing-name').value.trim();
   if(!name){ alert('نام الزامیه'); return; }
-  const ing={
-    id:editIngId||Date.now(),name,
-    category:document.getElementById('ing-cat').value,
-    desc:document.getElementById('ing-desc').value,
-    price:parseFloat(document.getElementById('ing-price').value)||0,
-    unit:document.getElementById('ing-unit').value,
-    torob_link:document.getElementById('ing-torob').value,
-    supplier:document.getElementById('ing-supplier').value,
-    price_date:document.getElementById('ing-price-date').value,
-    temp:document.getElementById('ing-temp').value,
-    shelf_life:document.getElementById('ing-shelf').value,
-    storage_notes:document.getElementById('ing-storage-notes').value,
-    waste_risk:document.getElementById('ing-waste-risk').value,
-    seasonal:document.getElementById('ing-seasonal').value,
-    import_dep:document.getElementById('ing-import').value,
-    alternative:document.getElementById('ing-alt').value,
-    notes:document.getElementById('ing-notes').value,
-    created_at:new Date().toLocaleDateString('fa-IR')
-  };
-  if(editIngId){ ings=ings.map(i=>i.id===editIngId?ing:i); }
-  else { ings.unshift(ing); }
+  const ing={id:editIngId||Date.now(),name,category:document.getElementById('ing-cat').value,desc:document.getElementById('ing-desc').value,
+    price:parseFloat(document.getElementById('ing-price').value)||0,unit:document.getElementById('ing-unit').value,
+    torob_link:document.getElementById('ing-torob').value,supplier:document.getElementById('ing-supplier').value,
+    price_date:document.getElementById('ing-price-date').value,temp:document.getElementById('ing-temp').value,
+    shelf_life:document.getElementById('ing-shelf').value,storage_notes:document.getElementById('ing-storage-notes').value,
+    waste_risk:document.getElementById('ing-waste-risk').value,seasonal:document.getElementById('ing-seasonal').value,
+    import_dep:document.getElementById('ing-import').value,alternative:document.getElementById('ing-alt').value,
+    notes:document.getElementById('ing-notes').value,created_at:new Date().toLocaleDateString('fa-IR')};
+  if(editIngId){ ings=ings.map(i=>i.id===editIngId?ing:i); } else { ings.unshift(ing); }
   saveIngs(); show('ings');
 }
-function deleteIng(id){
-  if(!confirm('حذف بشه؟')) return;
-  ings=ings.filter(i=>i.id!==id); saveIngs(); show('ings');
-}
+function deleteIng(id){ if(!confirm('حذف بشه؟')) return; ings=ings.filter(i=>i.id!==id); saveIngs(); show('ings'); }
 
 // ══ COMPARE ═══════════════════════════════════════════════════
 function initCompare(){
@@ -1055,19 +897,12 @@ function initCompare(){
   document.getElementById('cmp-b').innerHTML=`<option value="">انتخاب کن...</option>${opts}`;
 }
 function renderCompare(){
-  const idA=document.getElementById('cmp-a').value;
-  const idB=document.getElementById('cmp-b').value;
+  const idA=document.getElementById('cmp-a').value; const idB=document.getElementById('cmp-b').value;
   if(!idA||!idB){ document.getElementById('compare-result').innerHTML=''; return; }
-  const a=docs.find(d=>d.id==idA); const b=docs.find(d=>d.id==idB);
-  if(!a||!b) return;
-  const fcpA=parseFloat(a.financials?.food_cost_percent||0);
-  const fcpB=parseFloat(b.financials?.food_cost_percent||0);
-  const fcpWinA=fcpA&&fcpB&&fcpA<fcpB;
-  const fcpWinB=fcpA&&fcpB&&fcpB<fcpA;
-
+  const a=docs.find(d=>d.id==idA); const b=docs.find(d=>d.id==idB); if(!a||!b) return;
+  const fcpA=parseFloat(a.financials?.food_cost_percent||0); const fcpB=parseFloat(b.financials?.food_cost_percent||0);
   const compareFields=[
-    ['دسته‌بندی',a.category,b.category,null],
-    ['وضعیت',a.status,b.status,null],
+    ['دسته‌بندی',a.category,b.category,null],['وضعیت',a.status,b.status,null],
     ['Food Cost %',fcpA?fcpA+'٪':'—',fcpB?fcpB+'٪':'—',fcpA&&fcpB?(fcpA<fcpB?'a':'b'):null],
     ['قیمت فروش',a.financials?.suggested_price||'—',b.financials?.suggested_price||'—',null],
     ['حاشیه سود',a.financials?.gross_margin||'—',b.financials?.gross_margin||'—',null],
@@ -1076,54 +911,24 @@ function renderCompare(){
     ['تقاضا',a.market?.demand_estimate||'—',b.market?.demand_estimate||'—',null],
     ['زمان سرویس',a.sop?.service_time_seconds?a.sop.service_time_seconds+'ث':'—',b.sop?.service_time_seconds?b.sop.service_time_seconds+'ث':'—',a.sop?.service_time_seconds&&b.sop?.service_time_seconds?(parseInt(a.sop.service_time_seconds)<parseInt(b.sop.service_time_seconds)?'a':'b'):null],
     ['فضا مورد نیاز',a.operations?.space_sqm?a.operations.space_sqm+'م²':'—',b.operations?.space_sqm?b.operations.space_sqm+'م²':'—',null],
-    ['چند شعبه',a.scalability?.multi_branch_ready||'—',b.scalability?.multi_branch_ready||'—',null],
-  ];
-
+    ['چند شعبه',a.scalability?.multi_branch_ready||'—',b.scalability?.multi_branch_ready||'—',null]];
   document.getElementById('compare-result').innerHTML=`
-    <div class="g2" style="margin-bottom:10px">
-      <div class="compare-header"><div style="font-size:14px;font-weight:700;color:#fff">${a.title}</div><div class="badge" style="background:${(SM[a.status]||SM['ایده']).bg};color:${(SM[a.status]||SM['ایده']).c};margin-top:6px">${a.status}</div></div>
-      <div class="compare-header"><div style="font-size:14px;font-weight:700;color:#fff">${b.title}</div><div class="badge" style="background:${(SM[b.status]||SM['ایده']).bg};color:${(SM[b.status]||SM['ایده']).c};margin-top:6px">${b.status}</div></div>
-    </div>
-    ${compareFields.map(([label,va,vb,winner])=>`
-      <div class="compare-row">
-        <div class="compare-cell ${winner==='a'?'compare-winner':''}">
-          <div class="compare-label">${label}</div>
-          <div class="compare-value">${va} ${winner==='a'?'✓':''}</div>
-        </div>
-        <div class="compare-cell ${winner==='b'?'compare-winner':''}">
-          <div class="compare-label">${label}</div>
-          <div class="compare-value">${vb} ${winner==='b'?'✓':''}</div>
-        </div>
-      </div>`).join('')}`;
+    <div class="g2" style="margin-bottom:10px"><div class="compare-header"><div style="font-size:14px;font-weight:700;color:#fff">${a.title}</div><div class="badge" style="background:${(SM[a.status]||SM['ایده']).bg};color:${(SM[a.status]||SM['ایده']).c};margin-top:6px">${a.status}</div></div><div class="compare-header"><div style="font-size:14px;font-weight:700;color:#fff">${b.title}</div><div class="badge" style="background:${(SM[b.status]||SM['ایده']).bg};color:${(SM[b.status]||SM['ایده']).c};margin-top:6px">${b.status}</div></div></div>
+    ${compareFields.map(([label,va,vb,winner])=>`<div class="compare-row"><div class="compare-cell ${winner==='a'?'compare-winner':''}"><div class="compare-label">${label}</div><div class="compare-value">${va} ${winner==='a'?'✓':''}</div></div><div class="compare-cell ${winner==='b'?'compare-winner':''}"><div class="compare-label">${label}</div><div class="compare-value">${vb} ${winner==='b'?'✓':''}</div></div></div>`).join('')}`;
 }
 
 // ══ TAGS ══════════════════════════════════════════════════════
-function renderTagsSettings(){
-  document.getElementById('all-tags-list').innerHTML=globalTags.map(t=>`
-    <span class="tag-pill">#${t} <span onclick="removeGlobalTag('${t}')" style="cursor:pointer;color:var(--red);margin-right:2px">×</span></span>`).join('');
-}
-function addGlobalTag(){
-  const t=document.getElementById('new-tag-input').value.trim();
-  if(!t||globalTags.includes(t)) return;
-  globalTags.push(t); saveTags();
-  document.getElementById('new-tag-input').value='';
-  renderTagsSettings();
-}
+function renderTagsSettings(){ document.getElementById('all-tags-list').innerHTML=globalTags.map(t=>`<span class="tag-pill">#${t} <span onclick="removeGlobalTag('${t}')" style="cursor:pointer;color:var(--red);margin-right:2px">×</span></span>`).join(''); }
+function addGlobalTag(){ const t=document.getElementById('new-tag-input').value.trim(); if(!t||globalTags.includes(t)) return; globalTags.push(t); saveTags(); document.getElementById('new-tag-input').value=''; renderTagsSettings(); }
 function removeGlobalTag(t){ globalTags=globalTags.filter(g=>g!==t); saveTags(); renderTagsSettings(); }
 
 // ══ AI GENERATE ═══════════════════════════════════════════════
-const SYS=`تو یک F&B Manager متخصص هستی. از ورودی سند کامل بساز. فقط JSON خالص بده.
+const SYS=`تو یک F&B Manager متخصص با تجربه در بازار ایران هستی. از ورودی سند کامل بساز. فقط JSON خالص بده.
 {"title":"","category":"رسپی|منو|مدل سرویس|تجهیزات|ایده فضا","tags":[],"identity":{"concept_statement":"","origin":"","tags":[]},"recipe":{"ingredients":[{"name":"","amount":""}],"yield":"","prep_time":"","cook_time":""},"sop":{"steps":[],"service_time_seconds":"","quality_checkpoints":[]},"operations":{"equipment":[{"name":"","spec":""}],"staff_count":"","staff_skill":"","space_sqm":""},"supply":{"key_ingredients":[{"ingredient":"","source":"","seasonal":false}],"import_dependency":"","alternatives":""},"financials":{"food_cost_per_serving":"","packaging_cost":"","total_cogs":"","suggested_price":"","food_cost_percent":"","gross_margin":"","item_role":"traffic_driver"},"market":{"target_customer":"","demand_estimate":"","order_rate_estimate":"","price_sensitivity":""},"competition":{"similar_in_tehran":[],"our_differentiation":"","market_gap":""},"risks":{"operational_risks":[],"supply_risks":[],"regulatory_risks":[],"waste_risk":""},"scalability":{"multi_branch_ready":"","seasonal_version":"","city_adaptation":"","central_kitchen_compatible":""}}`;
-
 function handleGenImage(input){
   const file=input.files[0]; if(!file) return;
   const reader=new FileReader();
-  reader.onload=e=>{
-    genImgB64=e.target.result.split(',')[1];
-    const prev=document.getElementById('gen-img-preview');
-    prev.src=e.target.result; prev.style.display='block';
-    document.getElementById('gen-upload-area').style.display='none';
-  };
+  reader.onload=e=>{ genImgB64=e.target.result.split(',')[1]; const prev=document.getElementById('gen-img-preview'); prev.src=e.target.result; prev.style.display='block'; document.getElementById('gen-upload-area').style.display='none'; };
   reader.readAsDataURL(file);
 }
 async function generateDoc(){
@@ -1131,10 +936,8 @@ async function generateDoc(){
   if(!key){ alert('ابتدا API Key رو در تنظیمات وارد کن'); show('settings'); return; }
   const text=document.getElementById('gen-text').value.trim();
   if(!text&&!genImgB64){ alert('متن یا عکس وارد کن'); return; }
-  const btn=document.getElementById('gen-btn');
-  const err=document.getElementById('gen-err');
-  btn.disabled=true; btn.innerHTML='در حال پردازش... <span class="spinner"></span>';
-  err.style.display='none';
+  const btn=document.getElementById('gen-btn'); const err=document.getElementById('gen-err');
+  btn.disabled=true; btn.innerHTML='در حال پردازش... <span class="spinner"></span>'; err.style.display='none';
   const content=[];
   if(genImgB64) content.push({type:'image',source:{type:'base64',media_type:'image/jpeg',data:genImgB64}});
   content.push({type:'text',text:text||'این تصویر رو تحلیل کن'});
@@ -1146,22 +949,16 @@ async function generateDoc(){
     const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
     const doc={...parsed,id:Date.now(),status:'ایده',created_at:new Date().toLocaleDateString('fa-IR'),image:genImgB64?'data:image/jpeg;base64,'+genImgB64:null,tags:parsed.tags||[]};
     docs.unshift(doc); saveDocs();
-    document.getElementById('gen-text').value='';
-    genImgB64=null;
-    document.getElementById('gen-img-preview').style.display='none';
-    document.getElementById('gen-upload-area').style.display='block';
+    document.getElementById('gen-text').value=''; genImgB64=null;
+    document.getElementById('gen-img-preview').style.display='none'; document.getElementById('gen-upload-area').style.display='block';
     currentDoc=doc; renderDetail(doc); show('detail');
-  }catch(e){
-    err.textContent='خطا: '+(e.message||'دوباره امتحان کن'); err.style.display='block';
-  }finally{ btn.disabled=false; btn.textContent='ساخت سند با AI'; }
+  }catch(e){ err.textContent='خطا: '+(e.message||'دوباره امتحان کن'); err.style.display='block'; }
+  finally{ btn.disabled=false; btn.textContent='ساخت سند با AI'; }
 }
 
-// ══ COMPARE NAV ═══════════════════════════════════════════════
-// Add compare button to topbar on list view
-document.getElementById('tb-actions').innerHTML=`<button class="btn btn-sm" style="background:var(--s2);color:var(--muted)" onclick="show('compare')">⚖️ مقایسه</button>`;
+document.getElementById('tb-actions').innerHTML=`<button class="btn btn-sm" style="background:var(--s2);color:var(--muted)" onclick="show('compare')">⚖️</button>`;
 
-// ══ INIT ══════════════════════════════════════════════════════
-updateMeta(); renderList();
+updateMeta(); renderDashboard();
 </script>
 </body>
 </html>
